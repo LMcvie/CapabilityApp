@@ -1,0 +1,10 @@
+#Container{
+    margin-top: 2rem;
+    background-color:rgb(13, 123, 240);
+    display:flex;
+    justify-content: center;
+    height:40rem;
+    border-radius:5%;
+    border: 3px outset silver;
+    width:40rem;
+}

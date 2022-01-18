@@ -1,0 +1,34 @@
+#list {
+    overflow-y: scroll;
+    width: 30%;
+    height: 14rem;
+    margin-bottom: 1rem;
+
+ }
+
+ #list > button {
+    background-color: white;
+    width: 100%;
+    height: 2rem;
+    padding: 5px 10px;
+    border: 1px solid dodgerblue;
+    border-radius: 5px;
+ }
+ 
+ #list >.completed{
+     background-color: darkgray;
+ }
+
+ #list > .notCompleted{
+     background-color:white;
+ }
+
+ #list > .selected {
+     background-color: blue;
+ }
+
+ #select {
+     width:10%;
+     height: 2rem;
+     margin-bottom: 1rem;
+ }

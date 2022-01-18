@@ -1,0 +1,12 @@
+#topicsList {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#topicsList > button{
+    border-radius:10%;
+    height:2.5rem;
+    width:5rem;
+}
