@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/CapabilityApp/static/css/main.e5c54688.css",
-    "main.js": "/CapabilityApp/static/js/main.5b530b63.js",
+    "main.css": "/CapabilityApp/static/css/main.702a4bc1.css",
+    "main.js": "/CapabilityApp/static/js/main.0ee42c14.js",
     "static/js/787.163cfeae.chunk.js": "/CapabilityApp/static/js/787.163cfeae.chunk.js",
     "index.html": "/CapabilityApp/index.html",
-    "main.e5c54688.css.map": "/CapabilityApp/static/css/main.e5c54688.css.map",
-    "main.5b530b63.js.map": "/CapabilityApp/static/js/main.5b530b63.js.map",
+    "main.702a4bc1.css.map": "/CapabilityApp/static/css/main.702a4bc1.css.map",
+    "main.0ee42c14.js.map": "/CapabilityApp/static/js/main.0ee42c14.js.map",
     "787.163cfeae.chunk.js.map": "/CapabilityApp/static/js/787.163cfeae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e5c54688.css",
-    "static/js/main.5b530b63.js"
+    "static/css/main.702a4bc1.css",
+    "static/js/main.0ee42c14.js"
   ]
 }
