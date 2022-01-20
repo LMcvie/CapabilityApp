@@ -1,6 +1,6 @@
 {
-  "homepage": "http://lmcvie.github.io/CapabilityApp",
   "name": "capability_app",
+  "homepage": "https://lmcvie.github.io/CapabilityApp/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

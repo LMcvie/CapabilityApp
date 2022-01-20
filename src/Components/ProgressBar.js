@@ -3,20 +3,19 @@ import './ProgressBar.css';
 
 const ProgressBar = ({ progress }) => {
 
-    console.log(progress);
     const [completed, setCompleted] = useState(0);
 
+    const bgcolor = "#ef6c00";
+
     useEffect(() => {
-        setCompleted(progress.completed);
+        setCompleted(progress);
         loadProgressBar();
     }, []);
 
     const loadProgressBar = () => {
-        console.log(`${progress.completed}%`);
-        console.log(progress.bgcolor);
         let element = document.getElementById("fillerStyles");
-        element.style.width = `${progress.completed}%`;
-        element.style.backgroundColor = progress.bgcolor;
+        element.style.width = `${progress}%`;
+        element.style.backgroundColor = bgcolor;
 
     }
 
@@ -30,7 +29,7 @@ const ProgressBar = ({ progress }) => {
     const fillerStyles = {
         height: '100%',
         width: `${completed}%`,
-        backgroundColor: progress.bgcolor,
+        backgroundColor: bgcolor,
         transition: 'width 1s ease-in-out',
         borderRadius: 'inherit',
         textAlign: 'right'
@@ -46,8 +45,6 @@ const ProgressBar = ({ progress }) => {
 
     return (
         <div id='ProgressBar'>
-            <h2>Progress Bar</h2>
-
             <div id='containerStyles'>
                 <div id='fillerStyles'>
                     <span id='labelStyles'>{`${completed}%`}</span>

@@ -1,5 +1,16 @@
-button{
-    border-radius:10%;
-    height:2.5rem;
-    width:5rem;
+#Menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#About{
+    Margin:2rem;
+    padding:1rem;
+    border-radius:5%;
+    border: solid silver 2px;
+}
+#About >h3 {
+    text-decoration: underline;
 }

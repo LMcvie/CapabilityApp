@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import {useState} from "react";
 import ScrollList from '../Components/ScrollList.js';
-import ProgressBar from '../Components/ProgressBar.js';
 import './TopicsPage.css';
 
 
@@ -9,7 +8,6 @@ const TopicsPage = () => {
 
     const [topic, setTopic] = useState(null);
 
-    const progressBarData = { bgcolor: "#ef6c00", completed: 23 };
 
     const topics = [
         { name: 'CSS', completed: 'completed' },
@@ -34,7 +32,6 @@ const TopicsPage = () => {
 
     return (
         <div id = 'topicsList'>
-            <ProgressBar progress={progressBarData} />
             <h2>Topics</h2>
             <ScrollList onTopicSubmit = {(selectedTopic) => setTopic(selectedTopic)} topics={topics} />
             <button onClick={handleStart}>Back To Menu</button>
