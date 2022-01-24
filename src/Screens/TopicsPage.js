@@ -1,40 +1,27 @@
 import { useNavigate } from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import ScrollList from '../Components/ScrollList.js';
 import './TopicsPage.css';
 
 
-const TopicsPage = () => {
-
-    const [topic, setTopic] = useState(null);
-
-
-    const topics = [
-        { name: 'CSS', completed: 'completed' },
-        { name: 'JavaScript', completed: 'notCompleted' },
-        { name: 'HTML', completed: 'notCompleted' },
-        { name: 'React', completed: 'completed' },
-        { name: 'ReactDom', completed: 'completed' },
-        { name: 'ReactRouter', completed: 'completed' },
-        { name: 'JQuery', completed: 'completed' },
-        { name: 'Node', completed: 'notCompleted' },
-        { name: 'Node', completed: 'notCompleted' },
-        { name: 'Node', completed: 'notCompleted' },
-        { name: 'Node', completed: 'notCompleted' },
-        { name: 'Node', completed: 'notCompleted' },
-        { name: 'Node', completed: 'notCompleted' }];
-
+const TopicsPage = ({topics, onTopicSelect}) => {
+    
     let navigate = useNavigate();
 
-    const handleStart = (event) => {
+    const handleBack= (event) => {
         navigate('/');
+    }
+
+    const handleTopicSelect = ({selectedTopic}) => {
+       onTopicSelect({selectedTopic});
+        
     }
 
     return (
         <div id = 'topicsList'>
             <h2>Topics</h2>
-            <ScrollList onTopicSubmit = {(selectedTopic) => setTopic(selectedTopic)} topics={topics} />
-            <button onClick={handleStart}>Back To Menu</button>
+            <ScrollList onTopicSubmit = {(selectedTopic) => handleTopicSelect(selectedTopic)} topics={topics} />
+            <button onClick={handleBack}>Back To Menu</button>
         </div>
     )
 

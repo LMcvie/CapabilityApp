@@ -31,8 +31,6 @@ const Credentials = ({onUserSubmit}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(userDetails);
-
         onUserSubmit({userDetails});
     }
 

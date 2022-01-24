@@ -4,7 +4,7 @@
     background-color: rgba(255, 255, 255, 0.797);
     border-radius: 50px;
     margin-top: 2rem;
-    
+    display:none;
     border: 1px solid dodgerblue;
   }
 
@@ -24,3 +24,4 @@ h2{
     color: white;
     font-weight: bold;
   }
+

@@ -1,49 +1,40 @@
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import QuestionSlider from '../Components/QuestionSlider.js';
+import './QuestionPage.css';
 
 
-const QuestionPage = () => {
+const QuestionPage = ({questions, onAnswerSubmit }) => {
+
+  let navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    navigate('/Topics');
+    onAnswerSubmit(questions);
+  }
 
 
-    const questions = 
-    [
-      {
-        defaultValue: '0',
-        text: 'How confident are you with CSS?'
-    
-      },
-      {
-        defaultValue: '50',
-        text: 'How confident are you working on release?'
-      },
-      {
-        defaultValue:'80',
-        text:'How confident are you with react router'
-      }
+
   
-    ]
-
-
-    let navigate = useNavigate();
-    
-    const handleSubmit = (event) => {
-        navigate('/Topics');
-    }
-
-
-    const QuestionList = questions.map((question,index) => {
-        return (
-            <QuestionSlider question = {question} key = {index} id= {index}></QuestionSlider>
-        );
-    });
-    
+  const QuestionList = questions.map((question, index) => {
     return (
-        <div id= 'QuestionPage'>
-        <h2>QuestionPage</h2>
+      <QuestionSlider question={question} key={index} id={index} onAnswer = {(question, id) => onAnswer(question, id)}></QuestionSlider>
+    );
+  });
+
+  const onAnswer = (question,id) => {
+    // questions[id] = question;
+  }
+
+  return (
+
+    <>
+      <h2>QuestionPage</h2>
+      <div id='QuestionPage'>
         {QuestionList}
-        <button onClick = {handleSubmit}>Submit Answers</button>
-        </div>
-    )
+      </div>
+      <button onClick={handleSubmit}>Submit Answers</button>
+    </>
+  )
 
 }
 

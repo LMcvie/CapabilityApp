@@ -49,7 +49,7 @@ const ScrollList = ({ topics, onTopicSubmit }) => {
             return;
         } 
         navigate('/Questions');
-        onTopicSubmit({selectedTopic: selectedTopic});
+        onTopicSubmit({selectedTopic});
     }
 
 

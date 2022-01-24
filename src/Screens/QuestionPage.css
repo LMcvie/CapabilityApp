@@ -1,0 +1,10 @@
+#QuestionPage{ 
+    /* overflow-y: scroll; */
+    height:70%;
+}
+
+#questionList{
+    display:flex;
+    flex-direction: column;
+
+}

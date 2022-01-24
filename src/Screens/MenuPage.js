@@ -6,8 +6,8 @@ import Credentials from '../Components/Credentials.js';
 const MenuPage = ({ onUserSubmit }) => {
     const navigate = useNavigate();
 
-    const handleStart = ({ userDetails }) => {
-        onUserSubmit({ userDetails });
+    const handleStart = ( userDetails) => {
+        onUserSubmit( userDetails);
         navigate("/Topics");
     }
 
