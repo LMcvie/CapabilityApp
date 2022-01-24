@@ -5,9 +5,10 @@ import './TopicsPage.css';
 
 
 const TopicsPage = ({topics, onTopicSelect, onBack, completedTopics}) => {
+
+    const [topicButtonText,setTopicButtonText] = useState('Back to Menu');
     
     let navigate = useNavigate();
-    console.log(completedTopics);
 
     const handleBack= (event) => {
         onBack();
@@ -16,11 +17,15 @@ const TopicsPage = ({topics, onTopicSelect, onBack, completedTopics}) => {
 
     const handleTopicSelect = ({selectedTopic}) => {
        onTopicSelect({selectedTopic});
+      
+    }
+
+    if(completedTopics && topicButtonText === 'Back to Menu') {
+        setTopicButtonText('Continue To Summary');
     }
 
     const toggleInput = (event) => {
         if(completedTopics) {
-            event.target.textContent = 'continue to summary';
             handleContinue();
         }
         else {
@@ -30,23 +35,14 @@ const TopicsPage = ({topics, onTopicSelect, onBack, completedTopics}) => {
 
     const handleContinue = (event) => {
         console.log('success');
+        alert('placeholder for navigation to summary');
     }
-
-
-    if (completedTopics)
-    {
-        let topicButton = document.getElementById("topicButton");
-        topicButton.setAttribute("onClick", `{handleContinue}`);
-        console.log(topicButton);
-        topicButton.textContent = 'Continue to Summary';
-    }
-
 
     return (
         <div id = 'topicsList'>
             <h2>Topics</h2>
             <ScrollList onTopicSubmit = {(selectedTopic) => handleTopicSelect(selectedTopic)} topics={topics} />
-            <button id = 'topicButton' onClick={toggleInput}>Back To Menu</button>
+            <button id = 'topicButton' onClick={toggleInput}>{topicButtonText}</button>
         </div>
     )
 
