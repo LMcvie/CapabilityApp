@@ -13,6 +13,10 @@ const ProgressBar = ({ progress, loadingBarRequired }) => {
         loadProgressBar();
     }, [progress]);
 
+    useEffect(() => {
+        ToggleProgressBar();
+    },[loadingBarRequired])
+
     const loadProgressBar = () => {
         let element = document.getElementById("fillerStyles");
         element.style.width = `${progress}%`;
@@ -20,11 +24,18 @@ const ProgressBar = ({ progress, loadingBarRequired }) => {
 
     }
 
-    if(loadingBarRequired) {
-        let element2 = document.getElementById("containerStyles");
-        element2.style.display = 'block';
-    }
+    const ToggleProgressBar = () => {
 
+
+    if(loadingBarRequired) {
+        let element = document.getElementById("containerStyles");
+        element.style.display = 'block';
+    }else
+    if(!loadingBarRequired){
+        let element = document.getElementById("containerStyles");
+        element.style.display = 'none';
+    }
+    }
 
 
     return (

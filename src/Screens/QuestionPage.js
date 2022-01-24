@@ -17,13 +17,9 @@ const QuestionPage = ({questions, onAnswerSubmit }) => {
   
   const QuestionList = questions.map((question, index) => {
     return (
-      <QuestionSlider question={question} key={index} id={index} onAnswer = {(question, id) => onAnswer(question, id)}></QuestionSlider>
+      <QuestionSlider question={question} key={index} id={index} ></QuestionSlider>
     );
   });
-
-  const onAnswer = (question,id) => {
-    // questions[id] = question;
-  }
 
   return (
 

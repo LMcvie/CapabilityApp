@@ -78,10 +78,21 @@ const CapabilityContainer = () => {
         { name: 'JQuery', completed: 'notCompleted' },
         { name: 'Node', completed: 'notCompleted' }]);
 
+
+    const [completedTopics, setCompletedTopics] = useState(false);
+
     useEffect(() => {
         setProgressBar();
     }, []);
 
+
+    useEffect(() => {
+        if (progress === 100) 
+        {
+            setCompletedTopics(true);
+        }
+    }, [progress]);
+   
 
 
 
@@ -112,13 +123,13 @@ const CapabilityContainer = () => {
     }
 
 
-
     const setProgressBar = () => {
         let filteredTopics = topics.filter((topic) => {
             return topic.completed.includes('completed');
         });
 
         setProgress(Math.round((filteredTopics.length / topics.length) * 100));
+       
     }
 
     const onAnswerSubmit = (updatedQuestions) => {
@@ -154,7 +165,7 @@ const CapabilityContainer = () => {
             <Router>
                 <Routes>
                     <Route path="/*" element={<MenuPage onUserSubmit={(userDetails) => handleUserInput(userDetails)} />} />
-                    <Route path="/Topics" element={<TopicsPage topics={topics} onTopicSelect={(selectedTopic) => handleSelectedTopic(selectedTopic)} />} />
+                    <Route path="/Topics" element={<TopicsPage topics={topics} onTopicSelect={(selectedTopic) => handleSelectedTopic(selectedTopic)} onBack={() => setLoadingBarRequired(false)} completedTopics = {completedTopics} />} />
                     <Route path="/Questions" element={<QuestionPage questions={filteredQuestions} onAnswerSubmit={(updatedQuestions) => onAnswerSubmit(updatedQuestions)} />} />
                     {/* <Route path="/Summary" element={<SummaryPage />} /> */}
                     {/* <Route path="*" element={<NotFoundPage />}/> */}
