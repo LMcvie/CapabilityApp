@@ -24,8 +24,8 @@ const QuestionSlider = ({question,id}) => {
         let gradientColor = `255,0,0`;
         if (answer >= 25 && answer <= 50) gradientColor = '215,140,0';
         if (answer >= 50 && answer <= 75) gradientColor = '255,165,0';
-        if (answer >= 75 && answer < 100) gradientColor = '255,215,0';
-        if (answer === 100) gradientColor = '166,214,8';
+        if (answer >= 75 && answer <= 99) gradientColor = '255,215,0';
+        if (answer > 99 ) gradientColor = '124,252,0';
         let color = `linear-gradient(90deg,rgb(${gradientColor})` + answer + '%, rgb(214,214,214)' + answer + '%)';
 
         document.getElementById(id).style.background = color;
