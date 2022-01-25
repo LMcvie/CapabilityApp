@@ -1,5 +1,6 @@
 import React from "react";
 import { Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import './SpiderChart.css';
 
 
 const SpiderChart = () => {
@@ -25,17 +26,14 @@ const SpiderChart = () => {
   // });
 
   return (
-    <div>
-      <h2> Capability</h2>
-      <ResponsiveContainer width="100%" aspect="2">
+    <div id = 'spiderChart'>
+      <ResponsiveContainer width="100%" aspect="1.25">
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
           <PolarGrid />
           <PolarAngleAxis dataKey="name" />
-          <PolarRadiusAxis angle={0} domain={[0, 100]} />
-          <Radar name="Danny" dataKey="series1" stroke="Green"
-            fill='green' fillOpacity={0.5} />
-          <Radar name="Mark" dataKey="series2" stroke="Blue"
-            fill='blue' fillOpacity={0.5} />
+          <Radar name="Danny" dataKey="series1" stroke="Red"
+            fill='red' fillOpacity={0.5} />
+          <PolarRadiusAxis angle={70} domain={[0, 100]} />
           <Legend />
         </RadarChart>
       </ResponsiveContainer>

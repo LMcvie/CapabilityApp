@@ -48,7 +48,7 @@ const ScrollList = ({ topics, onTopicSubmit }) => {
             alert('Please select the question set you want to complete');
             return;
         } 
-        navigate('/Questions');
+        navigate('/CapabilityApp/Questions');
         onTopicSubmit({selectedTopic});
     }
 

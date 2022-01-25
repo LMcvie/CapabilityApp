@@ -1,0 +1,26 @@
+#summary{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#chart{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    Margin:0.25rem;
+    border-radius:5%;
+    border: solid silver 2px;
+    width:35rem;
+    height:20rem;
+}
+
+#data{
+    Margin:0.25rem;
+    border-radius:5%;
+    border: solid silver 2px;
+    width: 100%;
+    height: 10rem;
+}

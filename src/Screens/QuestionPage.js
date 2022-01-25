@@ -8,7 +8,7 @@ const QuestionPage = ({questions, onAnswerSubmit }) => {
   let navigate = useNavigate();
 
   const handleSubmit = (event) => {
-    navigate('/Topics');
+    navigate('/CapabilityApp/Topics');
     onAnswerSubmit(questions);
   }
 

@@ -8,7 +8,7 @@ const MenuPage = ({ onUserSubmit }) => {
 
     const handleStart = ( userDetails) => {
         onUserSubmit( userDetails);
-        navigate("/Topics");
+        navigate("/CapabilityApp/Topics");
     }
 
     return (

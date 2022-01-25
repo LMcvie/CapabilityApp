@@ -157,6 +157,10 @@ const CapabilityContainer = () => {
         setFilteredQuestions(topicQuestions);
     }
 
+    const toggleBar=() => {
+        setLoadingBarRequired(!loadingBarRequired);
+    }
+
 
     return (
         <div id='Container'>
@@ -164,11 +168,11 @@ const CapabilityContainer = () => {
 
             <Router>
                 <Routes>
-                    <Route path="/*" element={<MenuPage onUserSubmit={(userDetails) => handleUserInput(userDetails)} />} />
-                    <Route path="/Topics" element={<TopicsPage topics={topics} onTopicSelect={(selectedTopic) => handleSelectedTopic(selectedTopic)} onBack={() => setLoadingBarRequired(false)} completedTopics = {completedTopics} />} />
-                    <Route path="/Questions" element={<QuestionPage questions={filteredQuestions} onAnswerSubmit={(updatedQuestions) => onAnswerSubmit(updatedQuestions)} />} />
-                    {/* <Route path="/Summary" element={<SummaryPage />} /> */}
-                    {/* <Route path="*" element={<NotFoundPage />}/> */}
+                    <Route path="/CapabilityApp" element={<MenuPage onUserSubmit={(userDetails) => handleUserInput(userDetails)} />} />
+                    <Route path="/CapabilityApp/Topics" element={<TopicsPage topics={topics} onTopicSelect={(selectedTopic) => handleSelectedTopic(selectedTopic)} completedTopics = {completedTopics} toggleBar={() => toggleBar()}/>} />
+                    <Route path="/CapabilityApp/Questions" element={<QuestionPage questions={filteredQuestions} onAnswerSubmit={(updatedQuestions) => onAnswerSubmit(updatedQuestions)} />} />
+                    <Route path="/CapabilityApp/Summary" element={<SummaryPage />} />
+                    <Route path="/*" element={<NotFoundPage/>}/>
                 </Routes>
             </Router>
 

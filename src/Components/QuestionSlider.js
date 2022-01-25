@@ -41,7 +41,7 @@ const QuestionSlider = ({question,id}) => {
     return (
         <div id='question-div'>
             <p>{question.text}</p>
-            <input type="range" id = {id} className="slider" min="0" max="100" defaultValue={answer} step="1" onChange={handleChange} ></input>
+            <input type="range" id = {id} className="slider" min="0" max="100" defaultValue={answer} step="1" onChange={handleChange} onClick={handleChange} ></input>
             <p>Value: {answer}</p>
                         
         </div>

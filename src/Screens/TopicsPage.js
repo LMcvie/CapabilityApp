@@ -1,18 +1,19 @@
 import { useNavigate } from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useState,useEffect} from "react";
 import ScrollList from '../Components/ScrollList.js';
 import './TopicsPage.css';
 
 
-const TopicsPage = ({topics, onTopicSelect, onBack, completedTopics}) => {
+const TopicsPage = ({topics, onTopicSelect, completedTopics, toggleBar}) => {
 
     const [topicButtonText,setTopicButtonText] = useState('Back to Menu');
-    
+
+  
     let navigate = useNavigate();
 
     const handleBack= (event) => {
-        onBack();
-        navigate('/');
+        toggleBar();
+        navigate('/CapabilityApp/');
     }
 
     const handleTopicSelect = ({selectedTopic}) => {
@@ -34,8 +35,8 @@ const TopicsPage = ({topics, onTopicSelect, onBack, completedTopics}) => {
     }
 
     const handleContinue = (event) => {
-        console.log('success');
-        alert('placeholder for navigation to summary');
+        toggleBar();
+        navigate('/CapabilityApp/summary');
     }
 
     return (
