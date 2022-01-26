@@ -7,7 +7,8 @@ const Credentials = ({onUserSubmit}) => {
     const [userDetails, setUserDetails] = useState({
         Email: null,
         Password: null,
-        Team: null
+        Team: null,
+        Discipline: null
     });
 
     const handleEmailChange = (event) => {
@@ -28,6 +29,12 @@ const Credentials = ({onUserSubmit}) => {
         setUserDetails (updatedDetails);
     }
 
+    const handleDisciplineChange = (event) => {
+        let updatedDetails = userDetails;
+        updatedDetails.Discipline = event.target.value;
+        setUserDetails (updatedDetails);
+    }
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -37,20 +44,38 @@ const Credentials = ({onUserSubmit}) => {
 
     return (
         <div>
-            <form id ='UserInfo' onSubmit={handleSubmit}>
+            <form id ='userInfo' onSubmit={handleSubmit}>
                 <div className = "formWrap">
                     <label htmlFor = "email"> Email Address (Work): </label>
-                <input type='email' placeholder='email...' required onChange={handleEmailChange} />
+                <input type='email' placeholder='Email' required onChange={handleEmailChange} />
                 </div>
 
                 <div className = "formWrap">
                 <label htmlFor = "pwd"> Password: </label>
-                <input type='password' name='pwd' placeholder='password' required onChange={handlePasswordChange} />
+                <input type='password' name='pwd' placeholder='Password' required onChange={handlePasswordChange} />
                 </div>
 
                 <div className = "formWrap">
                 <label htmlFor = "team"> Team: </label>
-                <input type='team' name='team' placeholder='team' required onChange={handleTeamChange} />
+                {/* <input type='text' name='team' placeholder='team' required onChange={handleTeamChange} 
+                /> */}
+                <select defaultValue = {''}name='team'required onChange={handleTeamChange}>
+                <option disabled value = '' required></option>
+                <option value= 'Gannon'>Gannon</option>
+                <option value= 'MineSweeper'>MineSweeper</option>
+                <option value= 'Tetris'>Tetris</option>
+                <option value= 'N/A'>N/A</option>
+                </select>
+                </div>
+                <div className = "formWrap">
+                <label htmlFor = "discipline"> Discipline: </label>
+                <select defaultValue = {''}name='discipline' required onChange={handleDisciplineChange}>
+                <option disabled value='' required></option>
+                <option value= 'Software Engineer'>Software Engineer</option>
+                <option value= 'Scrum Master'>Scrum Master</option>
+                <option value= 'Product Owner'>Product Owner</option>
+                <option value= 'Designer'>Designer</option>
+                </select>
                 </div>
                 <div id = "start">
                 <input type = "submit"  value = "Start"/>

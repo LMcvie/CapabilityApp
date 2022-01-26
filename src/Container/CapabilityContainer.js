@@ -20,48 +20,56 @@ const CapabilityContainer = () => {
         {
             name: 'CSS',
             value: '0',
-            text: 'How confident are you with CSS?'
-
+            text: 'How confident are you with CSS?',
+            description: 'CSS also known as Cascading Style Sheets'
         },
         {
             name: 'Node',
             value: '0',
-            text: 'How confident are you working on node?'
+            text: 'How confident are you working on node?',
+            description: 'Node.js is used for creating networking applications'
         },
         {
             name: 'Node',
             value: '0',
-            text: 'How much are you working on node?'
+            text: 'How much are you working on node?',
+            description: 'Node.js is used for creating networking applications'
         },
         {
             name: 'JavaScript',
             value: '0',
-            text: 'How confident are you with JavaScript'
+            text: 'How confident are you with JavaScript',
+            description: 'Scripting language enabling dynamic updating content'
         },
         {
             name: 'ReactRouter',
             value: '0',
-            text: 'How confident are you with react router'
+            text: 'How confident are you with react router',
+            description: 'React router is a library for routing in React, it enables navigation among views of different components ina react application'
         },
         {
             name: 'React',
             value: '0',
-            text: 'How confident are you with react'
+            text: 'How confident are you with react',
+            description: 'React is a free open-source front-end JavaScript Library for building user interfaces based on UI components'
         },
         {
             name: 'HTML',
             value: '0',
-            text: 'How confident are you with HTML'
+            text: 'How confident are you with HTML',
+            description: 'HTML is also known as Hyper-Text Markup Language'
         },
         {
             name: 'ReactDom',
             value: '0',
-            text: 'How confident are you with ReactDom'
+            text: 'How confident are you with ReactDom',
+            description: 'ReactDom is a package that provide DOM specific methods that can be used at the top level of a web app'
         },
         {
             name: 'JQuery',
             value: '0',
-            text: 'How confident are you with JQuery'
+            text: 'How confident are you with JQuery',
+            description: 'JQuery is a fast, small and feature-rich JavaScript Library designed to simplify HTML DOM tree traversal and manipulation'
         }
 
     ]);
@@ -69,14 +77,14 @@ const CapabilityContainer = () => {
 
 
     const [topics, setTopics] = useState([
-        { name: 'CSS', completed: 'notCompleted' },
-        { name: 'JavaScript', completed: 'notCompleted' },
-        { name: 'HTML', completed: 'notCompleted' },
-        { name: 'React', completed: 'notCompleted' },
-        { name: 'ReactDom', completed: 'notCompleted' },
-        { name: 'ReactRouter', completed: 'notCompleted' },
-        { name: 'JQuery', completed: 'notCompleted' },
-        { name: 'Node', completed: 'notCompleted' }]);
+        { optimus:'Develop',name: 'CSS', completed: 'notCompleted' },
+        { optimus:'Develop',name: 'JavaScript', completed: 'notCompleted' },
+        { optimus:'Develop',name: 'HTML', completed: 'notCompleted' },
+        { optimus:'Develop',name: 'React', completed: 'notCompleted' },
+        { optimus:'Develop',name: 'ReactDom', completed: 'notCompleted' },
+        { optimus:'Develop',name: 'ReactRouter', completed: 'notCompleted' },
+        { optimus:'Develop',name: 'JQuery', completed: 'notCompleted' },
+        { optimus:'Develop',name: 'Node', completed: 'notCompleted' }]);
 
 
     const [completedTopics, setCompletedTopics] = useState(false);

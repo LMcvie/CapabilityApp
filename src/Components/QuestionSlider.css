@@ -23,3 +23,20 @@ input[type='range']{
     width: 20rem;
 }
 
+#question-div{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+
+#question {
+  display:flex;
+  flex-direction: row;
+}
+
+#popUp {
+  display:flex;
+  font-size: small;
+}
+
