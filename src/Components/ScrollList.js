@@ -1,5 +1,5 @@
 
-import {useState} from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import './ScrollList.css';
 
@@ -13,7 +13,7 @@ const ScrollList = ({ topics, onTopicSubmit }) => {
     const handleClick = (event) => {
 
         // if they press selected topic again it unselects the topic
-        if(event.target === previousSelection) {
+        if (event.target === previousSelection) {
             event.target.className = topics[previousSelection.value].completed;
             setPreviousSelection(null);
             return;
@@ -32,7 +32,7 @@ const ScrollList = ({ topics, onTopicSubmit }) => {
 
     }
 
-
+    // generate every topic from list as a scrollable button
     let buttonsList = topics.map((topic, index) => {
         return (
             <button className={topic.completed} onClick={handleClick} key={index} value={index}>{topic.name} </button>
@@ -44,12 +44,12 @@ const ScrollList = ({ topics, onTopicSubmit }) => {
     // when select button is pressed send the selectedTopic back to the container
     const handleSelect = (event) => {
         event.preventDefault();
-        if(!selectedTopic) {
+        if (!selectedTopic) {
             alert('Please select the question set you want to complete');
             return;
-        } 
+        }
         navigate('/CapabilityApp/Questions');
-        onTopicSubmit({selectedTopic});
+        onTopicSubmit({ selectedTopic });
     }
 
 

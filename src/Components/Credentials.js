@@ -2,14 +2,18 @@ import React from "react";
 import { useState } from "react";
 import "./Credentials.css";
 
+//sets the User's credentials
+
+
 const Credentials = ({onUserSubmit}) => {
 
     const [userDetails, setUserDetails] = useState({
         Email: null,
-        Password: null,
         Team: null,
         Discipline: null
     });
+
+//Any changes in the input part of the form are stored in the state
 
     const handleEmailChange = (event) => {
         let updatedDetails = userDetails;
@@ -17,12 +21,8 @@ const Credentials = ({onUserSubmit}) => {
         setUserDetails (updatedDetails);
        
     }
-    const handlePasswordChange = (event) => {
-        let updatedDetails = userDetails;
-        updatedDetails.Password = event.target.value;
-        setUserDetails (updatedDetails);
-       
-    }
+
+      
     const handleTeamChange = (event) => {
         let updatedDetails = userDetails;
         updatedDetails.Team = event.target.value;
@@ -35,8 +35,8 @@ const Credentials = ({onUserSubmit}) => {
         setUserDetails (updatedDetails);
     }
 
-
-    const handleSubmit = (event) => {
+// on submit send the user data back to the container to be stored
+    const handleStart = (event) => {
         event.preventDefault();
         onUserSubmit({userDetails});
     }
@@ -44,21 +44,14 @@ const Credentials = ({onUserSubmit}) => {
 
     return (
         <div>
-            <form id ='userInfo' onSubmit={handleSubmit}>
+            <form id ='userInfo' onSubmit={handleStart}>
                 <div className = "formWrap">
                     <label htmlFor = "email"> Email Address (Work): </label>
                 <input type='email' placeholder='Email' required onChange={handleEmailChange} />
                 </div>
 
                 <div className = "formWrap">
-                <label htmlFor = "pwd"> Password: </label>
-                <input type='password' name='pwd' placeholder='Password' required onChange={handlePasswordChange} />
-                </div>
-
-                <div className = "formWrap">
                 <label htmlFor = "team"> Team: </label>
-                {/* <input type='text' name='team' placeholder='team' required onChange={handleTeamChange} 
-                /> */}
                 <select defaultValue = {''}name='team'required onChange={handleTeamChange}>
                 <option disabled value = '' required></option>
                 <option value= 'Gannon'>Gannon</option>
@@ -67,6 +60,7 @@ const Credentials = ({onUserSubmit}) => {
                 <option value= 'N/A'>N/A</option>
                 </select>
                 </div>
+
                 <div className = "formWrap">
                 <label htmlFor = "discipline"> Discipline: </label>
                 <select defaultValue = {''}name='discipline' required onChange={handleDisciplineChange}>
@@ -77,6 +71,7 @@ const Credentials = ({onUserSubmit}) => {
                 <option value= 'Designer'>Designer</option>
                 </select>
                 </div>
+                
                 <div id = "start">
                 <input type = "submit"  value = "Start"/>
                 </div>

@@ -12,13 +12,16 @@ h2{
     text-align: center;
 }
 
+
+/* styling of the progress bar based on the completion */
 #fillerStyles {
     height: 100%;
     transition: width 2s ease-in-out;
     border-radius: inherit;
     text-align:right;
   }
-
+  
+/* Styling of the bar displaying the actual percentage as the user progress */
 #labelStyles {
     padding: 5px;
     color: white;

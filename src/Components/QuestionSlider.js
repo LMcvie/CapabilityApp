@@ -2,6 +2,10 @@ import "./QuestionSlider.css";
 import {useState,useEffect} from 'react';
 import { useLocation } from "react-router-dom";
 
+//Slider bar to answer each question
+
+
+//Sets the default answer value
 const QuestionSlider = ({question,id}) => {
     const [answer,setAnswer]= useState(question.value);
     const [isShown,setShown] = useState (false);
@@ -18,7 +22,9 @@ const QuestionSlider = ({question,id}) => {
 
     const loadSlider = () => {
         setSliderColor();
-    }
+    } 
+
+    //Based on the value of the answer a certain colour is set
     
 
     const setSliderColor= () => {
@@ -34,7 +40,7 @@ const QuestionSlider = ({question,id}) => {
         document.getElementById(id).style.background = color;
     }
 
-
+// updates answer and color when slider is either clicked or thumb is moved
     const handleChange = (event) => {
         setSliderColor();
         setAnswer(event.target.value);
@@ -53,6 +59,7 @@ const QuestionSlider = ({question,id}) => {
             <input type="range" id = {id} className="slider" min="0" max="100" defaultValue={answer} step="1" onChange={handleChange} onClick={handleChange} ></input>
             <p >Value: {answer}</p>
             
+            {/* Hovers the description of the question in details */}
             {isShown && (
                 <div id = 'popUp'>
                     <p>{question.description}</p>

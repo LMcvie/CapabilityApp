@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import QuestionSlider from '../Components/QuestionSlider.js';
 import './QuestionPage.css';
 
+//Handles the submission of the answers 
 
 const QuestionPage = ({questions, onAnswerSubmit }) => {
 
@@ -14,7 +15,7 @@ const QuestionPage = ({questions, onAnswerSubmit }) => {
 
 
 
-  
+  // for the list of questions create a question component with slider and description
   const QuestionList = questions.map((question, index) => {
     return (
       <QuestionSlider question={question} key={index} id={index} ></QuestionSlider>

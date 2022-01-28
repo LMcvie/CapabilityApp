@@ -22,7 +22,7 @@ const SpiderChart = () => {
   // const RadarList = data.map((data, index) => {
   //   return (
   //     <></>// <Radar name = /Radar>
-  //   );ac
+  //   );
   // });
 
   return (

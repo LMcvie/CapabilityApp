@@ -10,7 +10,12 @@ import ProgressBar from '../Components/ProgressBar.js'
 
 const CapabilityContainer = () => {
 
-
+    //useSated for all the inputs:
+    //Inputs form the user details(Credentials);
+    //The progress bar
+    //Slider
+    //Selected topics
+    //Questions
     const [userDetails, setUserDetails] = useState({});
     const [progress, setProgress] = useState('0');
     const [loadingBarRequired, setLoadingBarRequired] = useState(false);
@@ -77,52 +82,54 @@ const CapabilityContainer = () => {
 
 
     const [topics, setTopics] = useState([
-        { optimus:'Develop',name: 'CSS', completed: 'notCompleted' },
-        { optimus:'Develop',name: 'JavaScript', completed: 'notCompleted' },
-        { optimus:'Develop',name: 'HTML', completed: 'notCompleted' },
-        { optimus:'Develop',name: 'React', completed: 'notCompleted' },
-        { optimus:'Develop',name: 'ReactDom', completed: 'notCompleted' },
-        { optimus:'Develop',name: 'ReactRouter', completed: 'notCompleted' },
-        { optimus:'Develop',name: 'JQuery', completed: 'notCompleted' },
-        { optimus:'Develop',name: 'Node', completed: 'notCompleted' }]);
+        { optimus: 'Develop', name: 'CSS', completed: 'notCompleted' },
+        { optimus: 'Develop', name: 'JavaScript', completed: 'notCompleted' },
+        { optimus: 'Develop', name: 'HTML', completed: 'notCompleted' },
+        { optimus: 'Develop', name: 'React', completed: 'notCompleted' },
+        { optimus: 'Develop', name: 'ReactDom', completed: 'notCompleted' },
+        { optimus: 'Develop', name: 'ReactRouter', completed: 'notCompleted' },
+        { optimus: 'Develop', name: 'JQuery', completed: 'notCompleted' },
+        { optimus: 'Develop', name: 'Node', completed: 'notCompleted' }]);
 
 
     const [completedTopics, setCompletedTopics] = useState(false);
 
+
+    // set progress bar set up on load
     useEffect(() => {
         setProgressBar();
     }, []);
 
-
+    // if progress is 100% completed set completed topics variable to true. only checks this when progress state is changed
     useEffect(() => {
-        if (progress === 100) 
-        {
+        if (progress === 100) {
             setCompletedTopics(true);
         }
     }, [progress]);
-   
 
 
 
+    // when user details is passed back from credentials set user details and set loading bar to true (as it will be navigating to topics page as well)
     const handleUserInput = ({ userDetails }) => {
         setUserDetails(userDetails);
         setLoadingBarRequired(true);
 
     }
 
+    // update topics array with which topics are completed and then updates the progress bar state
     const updateCompletedTopics = () => {
         let tempTopics = topics;
-           
-            topics.map((topic,index) => {
-                if (topic.name === selectedTopic) {
-                    tempTopics[index].completed = 'completed';
-                }
-            });
+
+        topics.map((topic, index) => {
+            if (topic.name === selectedTopic) {
+                tempTopics[index].completed = 'completed';
+            }
+        });
         setTopics(tempTopics);
         setProgressBar();
 
     }
-
+   //Update the topic menu as the topics are selected 
     const handleSelectedTopic = ({ selectedTopic }) => {
         selectedTopic = selectedTopic.replace(/ /g, '');
         setSelectedTopic(selectedTopic);
@@ -130,16 +137,18 @@ const CapabilityContainer = () => {
 
     }
 
-
+    //calculate the percentage of the topics that show completed then set the progress bar to the integer rounded value
     const setProgressBar = () => {
         let filteredTopics = topics.filter((topic) => {
             return topic.completed.includes('completed');
         });
 
         setProgress(Math.round((filteredTopics.length / topics.length) * 100));
-       
-    }
 
+    }
+ 
+ 
+    //Store the data once the answers are submitted 
     const onAnswerSubmit = (updatedQuestions) => {
         let testQuestions = questions;
         updatedQuestions.map((question) => {
@@ -155,6 +164,7 @@ const CapabilityContainer = () => {
 
     }
 
+    // if there is no selected topic return and don't update. filter the questions based on the selected topic and set the filter questions state to it. This can then be passed to the questions page
     const updateQuestions = (selectedTopic) => {
         if (selectedTopic === null) {
             return;
@@ -164,12 +174,16 @@ const CapabilityContainer = () => {
         });
         setFilteredQuestions(topicQuestions);
     }
-
-    const toggleBar=() => {
+    
+    
+    // calls the progress bar on the required screen (sets the visibility of the progress bar)
+    const toggleBar = () => {
         setLoadingBarRequired(!loadingBarRequired);
     }
 
 
+
+    //The default page is the menu page with different routes leading to the matching pages
     return (
         <div id='Container'>
             <ProgressBar progress={progress} loadingBarRequired={loadingBarRequired} />
@@ -177,10 +191,10 @@ const CapabilityContainer = () => {
             <Router>
                 <Routes>
                     <Route path="/CapabilityApp" element={<MenuPage onUserSubmit={(userDetails) => handleUserInput(userDetails)} />} />
-                    <Route path="/CapabilityApp/Topics" element={<TopicsPage topics={topics} onTopicSelect={(selectedTopic) => handleSelectedTopic(selectedTopic)} completedTopics = {completedTopics} toggleBar={() => toggleBar()}/>} />
+                    <Route path="/CapabilityApp/Topics" element={<TopicsPage topics={topics} onTopicSelect={(selectedTopic) => handleSelectedTopic(selectedTopic)} completedTopics={completedTopics} toggleBar={() => toggleBar()} />} />
                     <Route path="/CapabilityApp/Questions" element={<QuestionPage questions={filteredQuestions} onAnswerSubmit={(updatedQuestions) => onAnswerSubmit(updatedQuestions)} />} />
                     <Route path="/CapabilityApp/Summary" element={<SummaryPage />} />
-                    <Route path="/*" element={<NotFoundPage/>}/>
+                    <Route path="/*" element={<NotFoundPage />} />
                 </Routes>
             </Router>
 

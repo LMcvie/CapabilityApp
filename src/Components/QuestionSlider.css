@@ -1,3 +1,6 @@
+
+/* Styling of the slider */
+
 .slider{
     -webkit-appearance: none;
     background: linear-gradient(90deg, rgb(214,214,214) 60%, rgb(214,214,214) 60%);
@@ -13,16 +16,20 @@
 }
 
 
+
+
 #color-test::-webkit-slider-thumb{
   -webkit-appearance: none;
  
 
 }
 
+/* width of slider */
 input[type='range']{
     width: 20rem;
 }
 
+/* Styling of the question */
 #question-div{
   display:flex;
   flex-direction: column;
@@ -30,11 +37,12 @@ input[type='range']{
   align-items:center;
 }
 
+
 #question {
   display:flex;
   flex-direction: row;
 }
-
+/* pop up styling */
 #popUp {
   display:flex;
   font-size: small;

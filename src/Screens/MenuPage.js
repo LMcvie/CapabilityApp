@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import './MenuPage.css';
 import Credentials from '../Components/Credentials.js';
 
+//Submission of the user credentials
 
 const MenuPage = ({ onUserSubmit }) => {
     const navigate = useNavigate();

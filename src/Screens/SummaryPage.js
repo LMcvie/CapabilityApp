@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import './SummaryPage.css';
 import SpiderChart from '../Components/SpiderChart.js';
 
+//On the submission of the answers create a spider chart 
 
 const SummaryPage = () => {
  
