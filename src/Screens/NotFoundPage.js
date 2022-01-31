@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate,  } from "react-router-dom";
 
 
 
@@ -9,6 +9,7 @@ const NotFoundPage = () => {
     return (
         <div id='pageNotFound'>
           <h2>Page Not Found</h2>
+          <button onClick={() => navigate('/CapabilityApp/')}>Go Back</button>
         </div>
     )
 
