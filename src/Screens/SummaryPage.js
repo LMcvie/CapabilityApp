@@ -10,7 +10,20 @@ const SummaryPage = ({questions, topics, userDetails}) => {
 
     const handleClose =(event) => {
         navigate('/CapabilityApp');
+        window.location.reload();
     }
+
+    const dataList = questions.map(question => {
+        return (
+            <ul>
+                {/* <h3>Topic: {question.name}</h3> */}
+                <li>Question: {question.text}</li>
+                <li>Value: {question.value}</li>
+            </ul>
+            
+        )
+    })
+
 
     return (
         <div id='summary'>
@@ -21,7 +34,7 @@ const SummaryPage = ({questions, topics, userDetails}) => {
             <br></br>
             <div id = 'data'>
             <h3>Numerical Data</h3>
-            <p>Insert Numerical Data Here</p>
+            {dataList}
             </div>
             <button onClick={handleClose}>Close Tool</button>
         </div>

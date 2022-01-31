@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import {useState,useEffect} from "react";
+import {useState} from "react";
 import ScrollList from '../Components/ScrollList.js';
 import './TopicsPage.css';
 
@@ -16,6 +16,7 @@ const TopicsPage = ({topics, onTopicSelect, completedTopics, toggleBar}) => {
     const handleBack= (event) => {
         toggleBar();
         navigate('/CapabilityApp/');
+        window.location.reload();
     }
 
     // pass back selected topic to container when selected

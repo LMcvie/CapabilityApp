@@ -1,6 +1,6 @@
 import "./QuestionSlider.css";
 import {useState,useEffect} from 'react';
-import { useLocation } from "react-router-dom";
+import PopUp from "./PopUp.js";
 
 //Slider bar to answer each question
 
@@ -52,19 +52,21 @@ const QuestionSlider = ({question,id}) => {
         <div id='question-div'>
             <div id = 'question'>
             <p >{question.text}</p>
-            <img src = 'https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_info_outline_48px-512.png' alt = 'info icon' width = '17px' height = '17px'onMouseEnter={() => setShown(true)} onMouseLeave={() => setShown(false)}></img>
+            <img src = 'https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_info_outline_48px-512.png' alt = 'info icon' width = '20px' height = '20px' onMouseOver={() => setShown(true)} onMouseOut={() => setShown(false)}></img>
+
+              {/* Hovers the description of the question in details */}
+              {isShown && (
+                <div id = 'popUp'>
+                    <PopUp description ={question.description}/>
+                    </div>
+            )}         
             
             </div>
             
             <input type="range" id = {id} className="slider" min="0" max="100" defaultValue={answer} step="1" onChange={handleChange} onClick={handleChange} ></input>
             <p >Value: {answer}</p>
             
-            {/* Hovers the description of the question in details */}
-            {isShown && (
-                <div id = 'popUp'>
-                    <p>{question.description}</p>
-                    </div>
-            )}         
+          
         </div>
     );
 

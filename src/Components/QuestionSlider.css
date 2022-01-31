@@ -4,7 +4,6 @@
 .slider{
     -webkit-appearance: none;
     background: linear-gradient(90deg, rgb(214,214,214) 60%, rgb(214,214,214) 60%);
-  
     outline:none;
     opacity: 0.7;
     -webkit-transition: 0.2s;

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import MenuPage from '../Screens/MenuPage.js';
 import QuestionPage from '../Screens/QuestionPage.js';

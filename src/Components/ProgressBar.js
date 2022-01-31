@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useEffect } from 'react';
 import './ProgressBar.css';
 
 //Presents the percentage of completion of the form

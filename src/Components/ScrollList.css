@@ -1,6 +1,6 @@
 /* set dimension of list and allow from scrolling */
 #list {
-    overflow-y: scroll;
+    overflow-y: auto;
     width: 30%;
     height: 14rem;
     margin-bottom: 1rem;

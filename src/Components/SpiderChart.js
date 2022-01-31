@@ -1,7 +1,6 @@
 import {useState, useEffect} from 'react';
 import { Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 import './SpiderChart.css';
-import react from 'react';
 
 
 const SpiderChart = ({topics, userDetails}) => {
