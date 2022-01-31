@@ -157,11 +157,39 @@ const CapabilityContainer = () => {
                 return test.text === question.text;
             })
             testQuestions[testid] = question;
-        })
+        });
         setQuestions(testQuestions);
         updateQuestions(selectedTopic);
+        getTopicAverage(updatedQuestions);
+
+       
+
         updateCompletedTopics();
 
+    }
+
+    //get the average result for the skill/topic and store it in the topic object
+    const getTopicAverage = (updatedQuestions) => {
+
+        let tempTopics = topics;
+
+        let tempId = tempTopics.findIndex((test) => {
+            return test.name === selectedTopic;
+        
+        });
+
+        if (updatedQuestions.length ===1) {
+        
+            tempTopics[tempId].value = updatedQuestions[0].value;
+        }
+        else{
+             let total = updatedQuestions.reduce((runningTotal, number) => ({value: parseInt(runningTotal.value) + parseInt(number.value)})); 
+
+             tempTopics[tempId].value = total.value/updatedQuestions.length;
+        }
+        
+        console.log(tempTopics[tempId]);
+        
     }
 
     // if there is no selected topic return and don't update. filter the questions based on the selected topic and set the filter questions state to it. This can then be passed to the questions page
@@ -193,7 +221,7 @@ const CapabilityContainer = () => {
                     <Route path="/CapabilityApp" element={<MenuPage onUserSubmit={(userDetails) => handleUserInput(userDetails)} />} />
                     <Route path="/CapabilityApp/Topics" element={<TopicsPage topics={topics} onTopicSelect={(selectedTopic) => handleSelectedTopic(selectedTopic)} completedTopics={completedTopics} toggleBar={() => toggleBar()} />} />
                     <Route path="/CapabilityApp/Questions" element={<QuestionPage questions={filteredQuestions} onAnswerSubmit={(updatedQuestions) => onAnswerSubmit(updatedQuestions)} />} />
-                    <Route path="/CapabilityApp/Summary" element={<SummaryPage />} />
+                    <Route path="/CapabilityApp/Summary" element={<SummaryPage questions = {questions} topics = {topics} userDetails = {userDetails}/>} />
                     <Route path="/*" element={<NotFoundPage />} />
                 </Routes>
             </Router>

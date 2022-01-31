@@ -4,7 +4,7 @@ import SpiderChart from '../Components/SpiderChart.js';
 
 //On the submission of the answers create a spider chart 
 
-const SummaryPage = () => {
+const SummaryPage = ({questions, topics, userDetails}) => {
  
     const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const SummaryPage = () => {
         <div id='summary'>
             <h2>Summary</h2>
             <div id="chart">
-                <SpiderChart/>
+                <SpiderChart topics = {topics} userDetails ={userDetails}/>
             </div>
             <br></br>
             <div id = 'data'>

@@ -8,16 +8,16 @@ import "./Credentials.css";
 const Credentials = ({onUserSubmit}) => {
 
     const [userDetails, setUserDetails] = useState({
-        Email: null,
-        Team: null,
-        Discipline: null
+        email: null,
+        team: null,
+        discipline: null
     });
 
 //Any changes in the input part of the form are stored in the state
 
     const handleEmailChange = (event) => {
         let updatedDetails = userDetails;
-        updatedDetails.Email = event.target.value;
+        updatedDetails.email = event.target.value;
         setUserDetails (updatedDetails);
        
     }
@@ -25,13 +25,13 @@ const Credentials = ({onUserSubmit}) => {
       
     const handleTeamChange = (event) => {
         let updatedDetails = userDetails;
-        updatedDetails.Team = event.target.value;
+        updatedDetails.team = event.target.value;
         setUserDetails (updatedDetails);
     }
 
     const handleDisciplineChange = (event) => {
         let updatedDetails = userDetails;
-        updatedDetails.Discipline = event.target.value;
+        updatedDetails.discipline = event.target.value;
         setUserDetails (updatedDetails);
     }
 
