@@ -25,7 +25,7 @@
 
 /* width of slider */
 input[type='range']{
-    width: 20rem;
+    width: 15rem;
 }
 
 /* Styling of the question */
@@ -34,12 +34,14 @@ input[type='range']{
   flex-direction: column;
   justify-content: center;
   align-items:center;
+  font-size: small;
 }
 
 
 #question {
   display:flex;
   flex-direction: row;
+ 
 }
 /* pop up styling */
 #popUp {

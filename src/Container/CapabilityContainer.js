@@ -23,58 +23,70 @@ const CapabilityContainer = () => {
     const [filteredQuestions, setFilteredQuestions] = useState('');
     const [questions, setQuestions] = useState([
         {
-            name: 'CSS',
+            name: 'Understand',
             value: '0',
-            text: 'How confident are you with CSS?',
-            description: 'CSS also known as Cascading Style Sheets'
+            text: 'How confident are you with Strategic Planning?',
+            description: 'Researching, creating and agreeing a vision to align actions, plans and people from an engineering perspective with I&W strategy & objectives'
         },
         {
-            name: 'Node',
+            name: 'Understand',
             value: '0',
-            text: 'How confident are you working on node?',
-            description: 'Node.js is used for creating networking applications'
+            text: 'How confident are you with Enterprise Architecture?',
+            description: 'Aligning I&W and the Labs technology strategy with our roadmap and documenting this using architectural models.'
         },
         {
-            name: 'Node',
+            name: 'Understand',
             value: '0',
-            text: 'How much are you working on node?',
-            description: 'Node.js is used for creating networking applications'
+            text: 'How confident are you with Emerging Technology Monitoring?',
+            description: 'Identifying and assessing new and emerging technologies, products, services, methods and techniques.'
         },
         {
-            name: 'JavaScript',
+            name: 'Incubate',
             value: '0',
             text: 'How confident are you with JavaScript',
             description: 'Scripting language enabling dynamic updating content'
         },
         {
-            name: 'ReactRouter',
+            name: 'Incubate',
             value: '0',
-            text: 'How confident are you with react router',
-            description: 'React router is a library for routing in React, it enables navigation among views of different components ina react application'
+            text: 'How confident are you with Solution Architecture',
+            description: ''
         },
         {
-            name: 'React',
+            name: 'Incubate',
             value: '0',
-            text: 'How confident are you with react',
-            description: 'React is a free open-source front-end JavaScript Library for building user interfaces based on UI components'
+            text: 'How confident are you with Risk Management',
+            description: ''
         },
         {
-            name: 'HTML',
+            name: 'Develop',
             value: '0',
-            text: 'How confident are you with HTML',
-            description: 'HTML is also known as Hyper-Text Markup Language'
+            text: 'How confident are you with Prioritisation',
+            description: ''
         },
         {
-            name: 'ReactDom',
+            name: 'Develop',
             value: '0',
-            text: 'How confident are you with ReactDom',
-            description: 'ReactDom is a package that provide DOM specific methods that can be used at the top level of a web app'
+            text: 'How confident are you with React Testing Library',
+            description: ''
         },
         {
-            name: 'JQuery',
+            name: 'Develop',
             value: '0',
-            text: 'How confident are you with JQuery',
-            description: 'JQuery is a fast, small and feature-rich JavaScript Library designed to simplify HTML DOM tree traversal and manipulation'
+            text: 'How confident are you with Styled Components',
+            description: ''
+        },
+        {
+            name: 'Deploy',
+            value: '0',
+            text: 'How confident are you with Deploy',
+            description: ''
+        },
+        {
+            name: 'General',
+            value: '0',
+            text: 'How confident are you with Communicating to Stakeholders',
+            description: ''
         }
 
     ]);
@@ -82,14 +94,11 @@ const CapabilityContainer = () => {
 
 
     const [topics, setTopics] = useState([
-        { optimus: 'Develop', name: 'CSS', completed: 'notCompleted' },
-        { optimus: 'Develop', name: 'JavaScript', completed: 'notCompleted' },
-        { optimus: 'Develop', name: 'HTML', completed: 'notCompleted' },
-        { optimus: 'Develop', name: 'React', completed: 'notCompleted' },
-        { optimus: 'Develop', name: 'ReactDom', completed: 'notCompleted' },
-        { optimus: 'Develop', name: 'ReactRouter', completed: 'notCompleted' },
-        { optimus: 'Develop', name: 'JQuery', completed: 'notCompleted' },
-        { optimus: 'Develop', name: 'Node', completed: 'notCompleted' }]);
+        { name: 'Understand', completed: 'notCompleted' },
+        { name: 'Incubate', completed: 'notCompleted' },
+        { name: 'Develop', completed: 'notCompleted' },
+        { name: 'Deploy', completed: 'notCompleted' },
+        { name: 'General', completed: 'notCompleted' }]);
 
 
     const [completedTopics, setCompletedTopics] = useState(false);
@@ -185,10 +194,8 @@ const CapabilityContainer = () => {
         else{
              let total = updatedQuestions.reduce((runningTotal, number) => ({value: parseInt(runningTotal.value) + parseInt(number.value)})); 
 
-             tempTopics[tempId].value = total.value/updatedQuestions.length;
+             tempTopics[tempId].value = Math.floor(total.value/updatedQuestions.length);
         }
-        
-        console.log(tempTopics[tempId]);
         
     }
 

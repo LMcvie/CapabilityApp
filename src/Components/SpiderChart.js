@@ -9,11 +9,9 @@ const SpiderChart = ({topics, userDetails}) => {
 
   useEffect(() => {
     setData(topics.map((topic) => {
-      return {name: topic.name, user: topic.value}
+      return {name: topic.name, user:topic.value}
   }))
 }, [topics]);
-
-console.log(userDetails.email);
 
   return (
     <div id = 'spiderChart'>
@@ -23,7 +21,7 @@ console.log(userDetails.email);
           <PolarAngleAxis dataKey="name" />
           <Radar name={userDetails.email} dataKey="user" stroke="Red"
             fill='red' fillOpacity={0.5} />
-          <PolarRadiusAxis angle={70} domain={[0, 100]} />
+          {/* <PolarRadiusAxis angle={70} domain={[0, 100]} /> */}
           <Legend />
         </RadarChart>
       </ResponsiveContainer>
