@@ -1,4 +1,10 @@
 /* styling of chart */
 #spiderChart {
-    width:25.5rem;
+    width:40rem;
+}
+
+svg.recharts-surface tspan {
+	font-size: 1.0rem;
+	color: black;
+	font-family:  Arial;
 }

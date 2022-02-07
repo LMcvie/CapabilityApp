@@ -26,67 +26,78 @@ const CapabilityContainer = () => {
             name: 'Understand',
             value: '0',
             text: 'How confident are you with Strategic Planning?',
-            description: 'Researching, creating and agreeing a vision to align actions, plans and people from an engineering perspective with I&W strategy & objectives'
+            description: 'Researching, creating and agreeing a vision to align actions, plans and people from an engineering perspective with I&W strategy & objectives',
+            keyword: 'Strategic Planning'
         },
         {
             name: 'Understand',
             value: '0',
             text: 'How confident are you with Enterprise Architecture?',
-            description: 'Aligning I&W and the Labs technology strategy with our roadmap and documenting this using architectural models.'
+            description: 'Aligning I&W and the Labs technology strategy with our roadmap and documenting this using architectural models.',
+            keyword: 'Enterprise Architecture'
         },
         {
             name: 'Understand',
             value: '0',
             text: 'How confident are you with Emerging Technology Monitoring?',
-            description: 'Identifying and assessing new and emerging technologies, products, services, methods and techniques.'
+            description: 'Identifying and assessing new and emerging technologies, products, services, methods and techniques.',
+            keyword: 'Emerging Technology Monitoring'
         },
         {
             name: 'Incubate',
             value: '0',
             text: 'How confident are you with JavaScript',
-            description: 'Scripting language enabling dynamic updating content'
+            description: 'Scripting language enabling dynamic updating content',
+            keyword: 'JavaScript'
         },
         {
             name: 'Incubate',
             value: '0',
             text: 'How confident are you with Solution Architecture',
-            description: ''
+            description: '',
+            keyword: 'Solution Architecture'
         },
         {
             name: 'Incubate',
             value: '0',
             text: 'How confident are you with Risk Management',
-            description: ''
+            description: '',
+            keyword: 'Risk Management'
         },
         {
             name: 'Develop',
             value: '0',
             text: 'How confident are you with Prioritisation',
-            description: ''
+            description: '',
+            keyword: 'Prioritisation'
         },
         {
             name: 'Develop',
             value: '0',
             text: 'How confident are you with React Testing Library',
-            description: ''
+            description: '',
+            keyword: 'React Testing Library'
         },
         {
             name: 'Develop',
             value: '0',
             text: 'How confident are you with Styled Components',
-            description: ''
+            description: '',
+            keyword: 'Styled Components'
         },
         {
             name: 'Deploy',
             value: '0',
             text: 'How confident are you with Deploy',
-            description: ''
+            description: '',
+            keyword: 'Deploy'
         },
         {
             name: 'General',
             value: '0',
             text: 'How confident are you with Communicating to Stakeholders',
-            description: ''
+            description: '',
+            keyword: 'Communication'
         }
 
     ]);

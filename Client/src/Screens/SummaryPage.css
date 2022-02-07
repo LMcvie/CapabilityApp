@@ -7,10 +7,10 @@
 
 
 #chart{
+    margin-top:0.5rem;
     display:flex;
     justify-content: center;
     align-items: center;
-    Margin:0.25rem;
     border-radius:5%;
     border: solid silver 2px;
     width:35rem;
@@ -18,7 +18,6 @@
 }
 
 #data{
-    Margin:0.25rem;
     border-radius:5%;
     border: solid silver 2px;
     width: 100%;

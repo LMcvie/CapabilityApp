@@ -7,17 +7,22 @@ import { useState } from "react";
 
 const SummaryPage = ({ questions, topics, userDetails }) => {
 
-    const [filteredQUestions, setFilteredQuestions] = useState();
+    const [filteredQuestions, setFilteredQuestions] = useState();
     const [filteredStage, setFilteredStage] = useState ('');
-
+    let dataList ='';
+    
     const navigate = useNavigate();
+
+    
 
     const handleClose = (event) => {
         navigate('/CapabilityApp');
         window.location.reload();
     }
-
-    const dataList = questions.map((question, index) => {
+    
+    if (filteredStage !== '') {
+        
+    dataList = filteredQuestions.map((question, index) => {
 
         let skillLevel;
         if (question.value < 25) {
@@ -39,39 +44,62 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
 
         return (
             <ul key={index}>
-                <h3>Topic: {question.name}</h3>
                 <li>Question: {question.text}</li>
+                <li>Value:  {question.value}/100</li>
                 <li>Skill Level: {skillLevel}</li>
             </ul>
 
         )
     })
-
+}
 
     const handleOptimusChange = (event) => {
         setFilteredStage(event.target.value);
+        filterQuestions(event.target.value);
 
+    }
+
+    const filterQuestions = (stage) => {
+        let filtered = questions.filter(question => {
+            return question.name === stage;
+        })
+        setFilteredQuestions(filtered);
     }
 
 
     return (
         <div id='summary'>
             <h2>Summary</h2>
-            <div id="chart">
-                <SpiderChart topics={topics} userDetails={userDetails} />
-            </div>
-            <br></br>
-            <div id='data'>
-                <h2>Numerical Data</h2>
-                <select defaultValue={''} name='Optimus Stage' required onChange={handleOptimusChange}>
-                    <option disabled value='' required></option>
+
+            <select defaultValue={''} name='Optimus Stage' required onChange={handleOptimusChange}>
+                    <option value='' required>Optimus Overview</option>
                     <option value='Understand'>Understand</option>
                     <option value='Incubate'>Incubate</option>
                     <option value='Develop'>Develop</option>
                     <option value='Deploy'>Deploy</option>
-                    <option value='`General`'>General</option>
+                    <option value='General'>General</option>
                 </select>
-                {dataList}
+
+
+            <div id="chart">
+                <SpiderChart topics={topics} userDetails={userDetails} filteredStage = {filteredStage} filteredQuestions = {filteredQuestions} />
+            </div>
+            <br></br>
+            {/* <select defaultValue={''} name='Optimus Stage' required onChange={handleOptimusChange}>
+                    <option value='' required>Optimus Overview</option>
+                    <option value='Understand'>Understand</option>
+                    <option value='Incubate'>Incubate</option>
+                    <option value='Develop'>Develop</option>
+                    <option value='Deploy'>Deploy</option>
+                    <option value='General'>General</option>
+                </select> */}
+            <div id='data'>
+                <h2>Numerical Data</h2>
+                
+            {filteredStage!=='' && <h3>Topic: {filteredStage}</h3>}
+              {dataList}
+               
+            
             </div>
             <button onClick={handleClose}>Close Tool</button>
         </div>
