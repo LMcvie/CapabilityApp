@@ -21,86 +21,7 @@ const CapabilityContainer = () => {
     const [loadingBarRequired, setLoadingBarRequired] = useState(false);
     const [selectedTopic, setSelectedTopic] = useState(null);
     const [filteredQuestions, setFilteredQuestions] = useState('');
-    const [questions, setQuestions] = useState([
-        {
-            name: 'Understand',
-            value: '0',
-            text: 'How confident are you with Strategic Planning?',
-            description: 'Researching, creating and agreeing a vision to align actions, plans and people from an engineering perspective with I&W strategy & objectives',
-            keyword: 'Strategic Planning'
-        },
-        {
-            name: 'Understand',
-            value: '0',
-            text: 'How confident are you with Enterprise Architecture?',
-            description: 'Aligning I&W and the Labs technology strategy with our roadmap and documenting this using architectural models.',
-            keyword: 'Enterprise Architecture'
-        },
-        {
-            name: 'Understand',
-            value: '0',
-            text: 'How confident are you with Emerging Technology Monitoring?',
-            description: 'Identifying and assessing new and emerging technologies, products, services, methods and techniques.',
-            keyword: 'Emerging Technology Monitoring'
-        },
-        {
-            name: 'Incubate',
-            value: '0',
-            text: 'How confident are you with JavaScript',
-            description: 'Scripting language enabling dynamic updating content',
-            keyword: 'JavaScript'
-        },
-        {
-            name: 'Incubate',
-            value: '0',
-            text: 'How confident are you with Solution Architecture',
-            description: '',
-            keyword: 'Solution Architecture'
-        },
-        {
-            name: 'Incubate',
-            value: '0',
-            text: 'How confident are you with Risk Management',
-            description: '',
-            keyword: 'Risk Management'
-        },
-        {
-            name: 'Develop',
-            value: '0',
-            text: 'How confident are you with Prioritisation',
-            description: '',
-            keyword: 'Prioritisation'
-        },
-        {
-            name: 'Develop',
-            value: '0',
-            text: 'How confident are you with React Testing Library',
-            description: '',
-            keyword: 'React Testing Library'
-        },
-        {
-            name: 'Develop',
-            value: '0',
-            text: 'How confident are you with Styled Components',
-            description: '',
-            keyword: 'Styled Components'
-        },
-        {
-            name: 'Deploy',
-            value: '0',
-            text: 'How confident are you with Deploy',
-            description: '',
-            keyword: 'Deploy'
-        },
-        {
-            name: 'General',
-            value: '0',
-            text: 'How confident are you with Communicating to Stakeholders',
-            description: '',
-            keyword: 'Communication'
-        }
-
-    ]);
+    const [questions, setQuestions] = useState([]);
 
 
 
@@ -118,6 +39,7 @@ const CapabilityContainer = () => {
     // set progress bar set up on load
     useEffect(() => {
         setProgressBar();
+        FetchQuestions();
     }, []);
 
     // if progress is 100% completed set completed topics variable to true. only checks this when progress state is changed
@@ -126,6 +48,22 @@ const CapabilityContainer = () => {
             setCompletedTopics(true);
         }
     }, [progress]);
+
+
+
+    const FetchQuestions = async () => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/capability/`)
+            const data = await response.json();
+            await setQuestions(data);
+            // await setLoaded(true);
+        }
+
+        catch (error) {
+            console.log('error');
+        }
+
+    }
 
 
 

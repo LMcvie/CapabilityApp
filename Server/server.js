@@ -11,11 +11,12 @@ const createRouter = require('./helpers/create_router.js');
 MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true })
   .then((client) => {
     const db = client.db('lloyds');
-    const namesCollection = db.collection('names')
+    const namesCollection = db.collection('questions')
     const namesRouter = createRouter(namesCollection)
-    app.use('/api/names', namesRouter);
+    app.use('/api/capability', namesRouter);
 
   })
+  
   .catch(console.err);
 
 app.listen(5000, function () {
