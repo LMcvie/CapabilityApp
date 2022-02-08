@@ -1,5 +1,6 @@
 const express = require('express');
-const ObjectID = require('mongodb').ObjectID;
+const ObjectId = require('mongodb').ObjectId;
+//const ObjectID = require('mongodb').ObjectID; mongoDB older version. comment line above and use this one if mongo version is old
 
 const createRouter = function (collection) {
 
@@ -54,6 +55,24 @@ const createRouter = function (collection) {
         res.status(500);
         res.json({ status: 500, error: err });
       });
+  });
+
+  router.put('/:id', (req, res) => {
+    const id = req.params.id;
+    const updatedData = req.body;
+    collection
+    .updateOne(
+      { _id: ObjectId(id)}, // change this to match the mongo version id
+      { $set: updatedData },
+    )
+    .then((result) => {
+      res.json(result)
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500);
+      res.json({ status: 500, error: err });
+    });
   });
 
   return router;

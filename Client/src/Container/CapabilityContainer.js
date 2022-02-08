@@ -25,12 +25,7 @@ const CapabilityContainer = () => {
 
 
 
-    const [topics, setTopics] = useState([
-        { name: 'Understand', completed: 'notCompleted' },
-        { name: 'Incubate', completed: 'notCompleted' },
-        { name: 'Develop', completed: 'notCompleted' },
-        { name: 'Deploy', completed: 'notCompleted' },
-        { name: 'General', completed: 'notCompleted' }]);
+    const [topics, setTopics] = useState([]);
 
 
     const [completedTopics, setCompletedTopics] = useState(false);
@@ -39,7 +34,8 @@ const CapabilityContainer = () => {
     // set progress bar set up on load
     useEffect(() => {
         setProgressBar();
-        FetchQuestions();
+        fetchData('questions');
+        fetchData('topics');
     }, []);
 
     // if progress is 100% completed set completed topics variable to true. only checks this when progress state is changed
@@ -51,11 +47,19 @@ const CapabilityContainer = () => {
 
 
 
-    const FetchQuestions = async () => {
+    const fetchData = async (collection) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/capability/`)
+            const response = await fetch(`http://localhost:5000/api/${collection}`)
             const data = await response.json();
-            await setQuestions(data);
+
+            if(collection === 'questions') {
+                await setQuestions(data);
+            }
+
+            if(collection === 'topics') {
+                await setTopics(data);
+            }
+          
             // await setLoaded(true);
         }
 
@@ -64,6 +68,7 @@ const CapabilityContainer = () => {
         }
 
     }
+
 
 
 

@@ -82,3 +82,13 @@ db.questions.insertMany([
     },
   
   ]);
+
+  db.topics.insertMany([
+    { name: 'Understand', completed: 'notCompleted' },
+    { name: 'Incubate', completed: 'notCompleted' },
+    { name: 'Develop', completed: 'notCompleted' },
+    { name: 'Deploy', completed: 'notCompleted' },
+    { name: 'General', completed: 'notCompleted' },
+  ]);
+
+  
