@@ -22,12 +22,7 @@ const CapabilityContainer = () => {
     const [selectedTopic, setSelectedTopic] = useState(null);
     const [filteredQuestions, setFilteredQuestions] = useState('');
     const [questions, setQuestions] = useState([]);
-
-
-
     const [topics, setTopics] = useState([]);
-
-
     const [completedTopics, setCompletedTopics] = useState(false);
 
 

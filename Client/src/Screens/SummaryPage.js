@@ -21,7 +21,7 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
         window.location.reload();
     }
 
-    // if (filteredStage !== '') {
+     if (filteredStage !== '') {
 
         dataList = filteredQuestions.map((question, index) => {
 
@@ -52,7 +52,7 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
 
             )
         })
-    // }
+     }
 
 
     topicList = topics.map((topic, index) => {
@@ -76,7 +76,7 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
 
         return (
             <ul key={index}>
-                <h4> {topic.name}</h4>
+                <h3> {topic.name}</h3>
                 <li>Value: {topic.value}/100</li>
                 <li>Skill Level: {skillLevel}</li>
             </ul>
@@ -117,6 +117,7 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
                 <SpiderChart topics={topics} userDetails={userDetails} filteredStage={filteredStage} filteredQuestions={filteredQuestions} />
             </div>
             <br></br>
+            
             <div id='data'>
                 <h2>Numerical Data</h2>
 
