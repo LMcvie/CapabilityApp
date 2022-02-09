@@ -1,4 +1,4 @@
-use lloyds;
+use capability;
 
 db.dropDatabase();
 
@@ -74,11 +74,39 @@ db.questions.insertMany([
         keyword: 'Deploy'
     },
     {
+        name: 'Deploy',
+        value: '0',
+        text: 'How confident are you with Deploy',
+        description: '',
+        keyword: 'Deploy2'
+    },
+    {
+        name: 'Deploy',
+        value: '0',
+        text: 'How confident are you with Deploy',
+        description: '',
+        keyword: 'Deploy3'
+    },
+    {
         name: 'General',
         value: '0',
         text: 'How confident are you with Communicating to Stakeholders',
         description: '',
         keyword: 'Communication'
+    },
+    {
+        name: 'General',
+        value: '0',
+        text: 'How confident are you with Communicating to Stakeholders',
+        description: '',
+        keyword: 'Communication2'
+    },
+    {
+        name: 'General',
+        value: '0',
+        text: 'How confident are you with Communicating to Stakeholders',
+        description: '',
+        keyword: 'Communication3'
     },
   
   ]);

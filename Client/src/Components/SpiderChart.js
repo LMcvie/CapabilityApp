@@ -6,7 +6,7 @@ import './SpiderChart.css';
 const SpiderChart = ({topics, userDetails, filteredStage, filteredQuestions}) => {
 
   const [data, setData] = useState();
-  const [aspect,setAspect] = useState('1.5');
+  const [aspect,setAspect] = useState('1.8');
 
 //   useEffect(() => {
 //    handleTopicData();

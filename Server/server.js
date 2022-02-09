@@ -10,7 +10,7 @@ const createRouter = require('./helpers/create_router.js');
 
 MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true })
   .then((client) => {
-    const db = client.db('lloyds');
+    const db = client.db('capability');
 
     //access to questions
     const questionsCollection = db.collection('questions');
@@ -24,7 +24,7 @@ MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true })
 
     //complete user data (including answers)
     const answerCollection = db.collection('answers');
-    const answerRouter = createRouter(answerCollection);
+    const answersRouter = createRouter(answerCollection);
     app.use('/api/answers', answersRouter);
   })
   

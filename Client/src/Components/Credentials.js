@@ -66,6 +66,7 @@ const Credentials = ({ onUserSubmit }) => {
                         <option value='Tetris'>Tetris</option>
                         <option value='Thunderbirds'>Thunderbirds</option>
                         <option value='Yoshi'>Yoshi</option>
+                        <option value='StarFox'>StarFox</option>
                         <option value='N/A'>N/A</option>
                     </select>
                 </div>
@@ -78,6 +79,7 @@ const Credentials = ({ onUserSubmit }) => {
                         <option value='Scrum Master'>Scrum Master</option>
                         <option value='Product Owner'>Product Owner</option>
                         <option value='Designer'>Designer</option>
+                        <option value='Business Analyst'>Business Analyst</option>
                     </select>
                 </div>
 

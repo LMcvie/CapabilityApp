@@ -112,7 +112,7 @@ const CapabilityContainer = () => {
         updatedQuestions.map((question) => {
 
             let testid = questions.findIndex((test) => {
-                return test.text === question.text;
+                return test.keyword === question.keyword;
             })
             testQuestions[testid] = question;
         });

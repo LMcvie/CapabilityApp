@@ -109,7 +109,6 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
                 <option value='General'>General</option>
             </select>
 
-
             <div id="chart">
                 <SpiderChart topics={topics} userDetails={userDetails} filteredStage={filteredStage} filteredQuestions={filteredQuestions} />
             </div>
@@ -118,7 +117,7 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
             <div id='data'>
                 <h2>Numerical Data</h2>
 
-                {filteredStage !== '' && <h3>Topic: {filteredStage}</h3>}
+                {/* {filteredStage !== '' && <h3>{filteredStage}</h3>} */}
                 {dataList}
 
                 {/* {filteredStage === '' && <h3>Overview</h3>} */}
