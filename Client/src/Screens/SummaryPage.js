@@ -9,19 +9,18 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
 
     const [filteredQuestions, setFilteredQuestions] = useState();
     const [filteredStage, setFilteredStage] = useState('');
+
     let dataList = '';
     let topicList = '';
 
     const navigate = useNavigate();
-
-
 
     const handleClose = (event) => {
         navigate('/CapabilityApp');
         window.location.reload();
     }
 
-     if (filteredStage !== '') {
+    if (filteredStage !== '') {
 
         dataList = filteredQuestions.map((question, index) => {
 
@@ -52,39 +51,37 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
 
             )
         })
-     }
+    }
 
+    if (filteredStage === '') {
+        topicList = topics.map((topic, index) => {
 
-    topicList = topics.map((topic, index) => {
+            let skillLevel;
+            if (topic.value < 25) {
+                skillLevel = 'Awareness';
+            }
 
-        let skillLevel;
-        if (topic.value < 25) {
-            skillLevel = 'Awareness';
-        }
+            if (topic.value >= 25 && topic.value < 50) {
+                skillLevel = 'Working';
+            }
 
-        if (topic.value >= 25 && topic.value < 50) {
-            skillLevel = 'Working';
-        }
+            if (topic.value >= 50 && topic.value < 75) {
+                skillLevel = 'Practitioner';
+            }
 
-        if (topic.value >= 50 && topic.value < 75) {
-            skillLevel = 'Practitioner';
-        }
+            if (topic.value >= 75) {
+                skillLevel = 'Expert';
+            }
 
-        if (topic.value >= 75) {
-            skillLevel = 'Expert';
-        }
-
-        return (
-            <ul key={index}>
-                <h3> {topic.name}</h3>
-                <li>Value: {topic.value}/100</li>
-                <li>Skill Level: {skillLevel}</li>
-            </ul>
-
-        )
-
-    })
-
+            return (
+                <ul key={index}>
+                    <h3> {topic.name}</h3>
+                    <li>Value: {topic.value}/100</li>
+                    <li>Skill Level: {skillLevel}</li>
+                </ul>
+            )
+        })
+    }
     const handleOptimusChange = (event) => {
         setFilteredStage(event.target.value);
         filterQuestions(event.target.value);
@@ -117,16 +114,17 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
                 <SpiderChart topics={topics} userDetails={userDetails} filteredStage={filteredStage} filteredQuestions={filteredQuestions} />
             </div>
             <br></br>
-            
+
             <div id='data'>
                 <h2>Numerical Data</h2>
 
                 {filteredStage !== '' && <h3>Topic: {filteredStage}</h3>}
                 {dataList}
 
-                {filteredStage === '' && <h3>Overview</h3>}
-                {topicList}
-
+                {/* {filteredStage === '' && <h3>Overview</h3>} */}
+                <div id='overview'>
+                    {topicList}
+                </div>
 
             </div>
             <button onClick={handleClose}>Close Tool</button>
