@@ -111,12 +111,69 @@ db.questions.insertMany([
   
   ]);
 
-  db.topics.insertMany([
-    { name: 'Understand', completed: 'notCompleted' },
-    { name: 'Incubate', completed: 'notCompleted' },
-    { name: 'Develop', completed: 'notCompleted' },
-    { name: 'Deploy', completed: 'notCompleted' },
-    { name: 'General', completed: 'notCompleted' },
-  ]);
+  db.teams.insertMany([
+    {
+        _id: 'team-1',
+        name: 'Ganon',
+    },
+    {
+        _id:'team-2',
+        name: 'Layton',
+    },
+    {
+        _id:'team-3',
+        name: 'Link',
+    },
+    {
+        _id:'team-4',
+        name: 'Minesweeper',
+    },
+    {
+        _id:'team-5',
+        name: 'NWoW',
+    },
+    {
+        _id:'team-6',
+        name: 'Pikachu',
+    },
+    {
+        _id:'team-7',
+        name: 'Quality Engineering',
+    },
+    {
+        _id:'team-8',
+        name: 'S.H.I.E.L.D',
+    },
+    {
+        _id:'team-9',
+        name: 'Sonic',
+    },
+    {
+        _id:'team-10',
+        name: 'Tetris',
+    },
+    {
+        _id:'team-11',
+        name: 'Thunderbirds',
+    },
+    {
+        _id:'team-12',
+        name: 'Yoshi',
+    },
+    {
+        _id:'team-13',
+        name: 'Starfox',
+    },
+    {
+        _id:'team-14',
+        name: 'N/A',
+    },
+    
+]);
 
-  
+
+const user = {
+   _id: 'test@mail.com',
+    disciplineId: 'discipline-1',
+    teamId:'team-1',
+}

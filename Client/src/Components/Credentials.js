@@ -5,7 +5,7 @@ import "./Credentials.css";
 //sets the User's credentials
 
 
-const Credentials = ({ onUserSubmit }) => {
+const Credentials = ({ onUserSubmit}) => {
 
     const [userDetails, setUserDetails] = useState({
         email: null,

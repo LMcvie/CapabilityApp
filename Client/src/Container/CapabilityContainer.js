@@ -7,6 +7,7 @@ import TopicsPage from '../Screens/TopicsPage.js';
 import NotFoundPage from '../Screens/NotFoundPage.js';
 import './CapabilityContainer.css';
 import ProgressBar from '../Components/ProgressBar.js'
+import {fetchData} from '../Helper/CapabilityService.js';
 
 const CapabilityContainer = () => {
 
@@ -17,20 +18,26 @@ const CapabilityContainer = () => {
     //Selected topics
     //Questions
     const [userDetails, setUserDetails] = useState({});
+    const [discipline,setDiscipline] = useState();
     const [progress, setProgress] = useState('0');
     const [loadingBarRequired, setLoadingBarRequired] = useState(false);
     const [selectedTopic, setSelectedTopic] = useState(null);
     const [filteredQuestions, setFilteredQuestions] = useState('');
     const [questions, setQuestions] = useState([]);
-    const [topics, setTopics] = useState([]);
+    const [topics, setTopics] = useState(
+    [{ name: 'Understand', key: 'topic-1', completed: 'notCompleted' },
+    { name: 'Incubate', key: 'topic-2', completed: 'notCompleted' },
+    { name: 'Develop', key: 'topic-3', completed: 'notCompleted' },
+    { name: 'Deploy', key: 'topic-4', completed: 'notCompleted' },
+    { name: 'General', key: 'topic-5', completed: 'notCompleted' },]);
     const [completedTopics, setCompletedTopics] = useState(false);
 
 
     // set progress bar set up on load
-    useEffect(() => {
+    useEffect(async() => {
         setProgressBar();
-        fetchData('questions');
-        fetchData('topics');
+        setQuestions(await fetchData('questions'));
+        // fetchData('teams')
     }, []);
 
     // if progress is 100% completed set completed topics variable to true. only checks this when progress state is changed
@@ -41,34 +48,10 @@ const CapabilityContainer = () => {
     }, [progress]);
 
 
-
-    const fetchData = async (collection) => {
-        try {
-            const response = await fetch(`http://localhost:5000/api/${collection}`)
-            const data = await response.json();
-
-            if(collection === 'questions') {
-                await setQuestions(data);
-            }
-
-            if(collection === 'topics') {
-                await setTopics(data);
-            }
-          
-            // await setLoaded(true);
-        }
-
-        catch (error) {
-            console.log('error');
-        }
-
-    }
-
-
-
-
     // when user details is passed back from credentials set user details and set loading bar to true (as it will be navigating to topics page as well)
     const handleUserInput = ({ userDetails }) => {
+        setDiscipline(userDetails.discipline);
+        delete userDetails.discipline;
         setUserDetails(userDetails);
         setLoadingBarRequired(true);
 
