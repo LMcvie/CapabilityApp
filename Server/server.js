@@ -12,21 +12,37 @@ MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true })
   .then((client) => {
     const db = client.db('capability');
 
-    //access to questions
     const questionsCollection = db.collection('questions');
     const questionsRouter = createRouter(questionsCollection);
     app.use('/api/questions', questionsRouter);
 
-    //access to topics
     const topicsCollection = db.collection('topics');
     const topicsRouter = createRouter(topicsCollection);
     app.use('/api/topics', topicsRouter);
 
-    //complete user data (including answers)
     const answerCollection = db.collection('answers');
     const answersRouter = createRouter(answerCollection);
     app.use('/api/answers', answersRouter);
+
+    const teamsCollection = db.collection('teams');
+    const teamsRouter = createRouter(teamsCollection);
+    app.use('/api/teams', teamsRouter);
+
+    const skillsCollection = db.collection('skills');
+    const skillsRouter = createRouter(skillsCollection);
+    app.use('/api/skills', skillsRouter);
+
+    const usersCollection = db.collection('users');
+    const usersRouter = createRouter(usersCollection);
+    app.use('/api/users', usersRouter);
+
+    const disciplinesCollection = db.collection('disciplines');
+    const disciplinesRouter = createRouter(disciplinesCollection);
+    app.use('/api/disciplines', disciplinesRouter);
+  
   })
+
+  
   
   .catch(console.err);
 

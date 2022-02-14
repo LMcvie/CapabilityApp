@@ -1,17 +1,20 @@
-import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Credentials.css";
+import { fetchData } from '../Helper/CapabilityService.js';
 
-//sets the User's credentials
+const Credentials = ({ onUserSubmit }) => {
 
+    let teamSelect, disciplineSelect;
 
-const Credentials = ({ onUserSubmit}) => {
+    const [teams, setTeams] = useState();
+    const [disciplines, setDisciplines] = useState();
 
-    const [userDetails, setUserDetails] = useState({
-        email: null,
-        team: null,
-        discipline: null
-    });
+    useEffect(async () => {
+        setTeams(await fetchData('teams'));
+        setDisciplines(await fetchData('disciplines'));
+    }, []);
+
+    const [userDetails, setUserDetails] = useState({});
 
     //Any changes in the input part of the form are stored in the state
 
@@ -26,12 +29,14 @@ const Credentials = ({ onUserSubmit}) => {
     const handleTeamChange = (event) => {
         let updatedDetails = userDetails;
         updatedDetails.team = event.target.value;
+        updatedDetails.teamId = `team-${event.target.selectedIndex}`;
         setUserDetails(updatedDetails);
     }
 
     const handleDisciplineChange = (event) => {
         let updatedDetails = userDetails;
         updatedDetails.discipline = event.target.value;
+        updatedDetails.disciplineId = `discipline-${event.target.selectedIndex}`;
         setUserDetails(updatedDetails);
     }
 
@@ -39,6 +44,23 @@ const Credentials = ({ onUserSubmit}) => {
     const handleStart = (event) => {
         event.preventDefault();
         onUserSubmit({ userDetails });
+    }
+
+    if (teams) {
+        teamSelect = teams.map((team) => {
+            return (
+                <option value={team.name} key={team._id}>{team.name}</option>
+            )
+        });
+    }
+
+
+    if (disciplines) {
+        disciplineSelect = disciplines.map((discipline) => {
+            return (
+                <option value={discipline.name} key={discipline._id}>{discipline.name}</option>
+            )
+        });
     }
 
 
@@ -54,20 +76,7 @@ const Credentials = ({ onUserSubmit}) => {
                     <label htmlFor="team"> Team: </label>
                     <select defaultValue={''} name='team' required onChange={handleTeamChange}>
                         <option disabled value='' required></option>
-                        <option value='Ganon'>Ganon</option>
-                        <option value='Layton'>Layton</option>
-                        <option value='Link'>Link</option>
-                        <option value='Minesweeper'>MineSweeper</option>
-                        <option value='NWoW'>NWoW</option>
-                        <option value='Pikachu'>Pikachu</option>
-                        <option value='Quatliy Engineering'>Quality Engineering</option>
-                        <option value='S.H.I.E.L.D'>S.H.I.E.L.D</option>
-                        <option value='Sonic'>Sonic</option>
-                        <option value='Tetris'>Tetris</option>
-                        <option value='Thunderbirds'>Thunderbirds</option>
-                        <option value='Yoshi'>Yoshi</option>
-                        <option value='StarFox'>StarFox</option>
-                        <option value='N/A'>N/A</option>
+                        {teamSelect}
                     </select>
                 </div>
 
@@ -75,11 +84,7 @@ const Credentials = ({ onUserSubmit}) => {
                     <label htmlFor="discipline"> Discipline: </label>
                     <select defaultValue={''} name='discipline' required onChange={handleDisciplineChange}>
                         <option disabled value='' required></option>
-                        <option value='Software Engineer'>Software Engineer</option>
-                        <option value='Scrum Master'>Scrum Master</option>
-                        <option value='Product Owner'>Product Owner</option>
-                        <option value='Designer'>Designer</option>
-                        <option value='Business Analyst'>Business Analyst</option>
+                        {disciplineSelect}
                     </select>
                 </div>
 

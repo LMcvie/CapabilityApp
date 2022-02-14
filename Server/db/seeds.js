@@ -108,72 +108,199 @@ db.questions.insertMany([
         description: '',
         keyword: 'Communication3'
     },
-  
-  ]);
 
-  db.teams.insertMany([
+]);
+
+db.topics.insertMany([
+    { name: 'Understand', _id: 'topic-1', completed: 'notCompleted' },
+    { name: 'Incubate', _id: 'topic-2', completed: 'notCompleted' },
+    { name: 'Develop', _id: 'topic-3', completed: 'notCompleted' },
+    { name: 'Deploy', _id: 'topic-4', completed: 'notCompleted' },
+    { name: 'General', _id: 'topic-5', completed: 'notCompleted' },
+]);
+
+db.skills.insertMany([
+        {
+            name: 'Strategic Planning',
+            _id: 'skill-1',
+            discplineId: 'discipline-5',
+            optimusId: 'Understand',
+        },
+        {
+            name: 'Enterprise Architecture',
+            _id: 'skill-2',
+            disciplineId: 'discipline-5',
+            optimusId: 'Understand',
+        },
+        {
+            name: 'Emerging Technology Monitoring',
+            _id: 'skill-3',
+            disciplineId: 'discipline-5',
+            optimusId: 'Understand',
+        },
+        {
+            name: 'JavaScript',
+            _id: 'skill-4',
+            disciplineId: 'discipline-5',
+            optimusId: 'Incubate',
+        },
+        {
+            name: 'Solution Architecture',
+            _id: 'skill-5',
+            disciplineId: 'discipline-5',
+            optimusId: 'Incubate',
+        },
+        {
+            name: 'Risk Management',
+            _id: 'skill-6',
+            disciplineId: 'discipline-5',
+            optimusId: 'Incubate',
+        },
+        {
+            name: 'Prioritisation',
+            _id: 'skill-7',
+            disciplineId: 'discipline-5',
+            optimusId: 'Develop',
+        },
+        {
+            name: 'React Testing Library',
+            _id: 'skill-8',
+            disciplineId: 'discipline-5',
+            optimusId: 'Develop',
+        },
+        {
+            name: 'Stylised Components',
+            _id: 'skill-9',
+            disciplineId: 'discipline-5',
+            optimusId: 'Develop',
+        },
+        {
+            name: 'Deploy',
+            _id: 'skill-10',
+            disciplineId: 'discipline-5',
+            optimusId: 'Deploy',
+        },
+        {
+            name: 'Deploy',
+            _id: 'skill-11',
+            disciplineId: 'discipline-5',
+            optimusId: 'Deploy',
+        },
+        {
+            name: 'Deploy',
+            _id: 'skill-12',
+            disciplineId: 'discipline-5',
+            optimusId: 'Deploy',
+        },
+        {
+            name: 'Emerging Technology Monitoring',
+            _id: 'skill-13',
+            disciplineId: 'discipline-5',
+            optimusId: 'General',
+        },
+        {
+            name: 'Communication',
+            _id: 'skill-14',
+            disciplineId: 'discipline-5',
+            optimusId: 'General',
+        },
+        {
+            name: 'Communication',
+            _id: 'skill-15',
+            disciplineId: 'discipline-5',
+            optimusId: 'General',
+        },
+])
+
+
+db.teams.insertMany([
     {
         _id: 'team-1',
         name: 'Ganon',
     },
     {
-        _id:'team-2',
+        _id: 'team-2',
         name: 'Layton',
     },
     {
-        _id:'team-3',
+        _id: 'team-3',
         name: 'Link',
     },
     {
-        _id:'team-4',
+        _id: 'team-4',
         name: 'Minesweeper',
     },
     {
-        _id:'team-5',
+        _id: 'team-5',
         name: 'NWoW',
     },
     {
-        _id:'team-6',
+        _id: 'team-6',
         name: 'Pikachu',
     },
     {
-        _id:'team-7',
+        _id: 'team-7',
         name: 'Quality Engineering',
     },
     {
-        _id:'team-8',
+        _id: 'team-8',
         name: 'S.H.I.E.L.D',
     },
     {
-        _id:'team-9',
+        _id: 'team-9',
         name: 'Sonic',
     },
     {
-        _id:'team-10',
+        _id: 'team-10',
         name: 'Tetris',
     },
     {
-        _id:'team-11',
+        _id: 'team-11',
         name: 'Thunderbirds',
     },
     {
-        _id:'team-12',
+        _id: 'team-12',
         name: 'Yoshi',
     },
     {
-        _id:'team-13',
+        _id: 'team-13',
         name: 'Starfox',
     },
     {
-        _id:'team-14',
+        _id: 'team-14',
         name: 'N/A',
     },
-    
+
+]);
+
+db.disciplines.insertMany([
+    {
+        name: 'Business Analyst',
+        _id: 'discipline-1',
+    },
+    {
+        name: 'Designer',
+        _id: 'dicsipline-2'
+    },
+    {
+        name: 'Product Owner',
+        _id: 'dicsipline-3'
+    },
+    {
+        name: 'Scrum Master',
+        _id: 'dicsipline-4'
+    },
+    {
+        name: 'Software Developer',
+        _id: 'dicsipline-5'
+    },
 ]);
 
 
-const user = {
-   _id: 'test@mail.com',
-    disciplineId: 'discipline-1',
-    teamId:'team-1',
-}
+db.users.insertMany([
+    {
+        _id: 'test@mail.com',
+        disciplineId: 'discipline-5',
+        teamId: 'team-1',
+    },
+]);

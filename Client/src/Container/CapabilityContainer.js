@@ -11,12 +11,7 @@ import {fetchData} from '../Helper/CapabilityService.js';
 
 const CapabilityContainer = () => {
 
-    //useSated for all the inputs:
-    //Inputs form the user details(Credentials);
-    //The progress bar
-    //Slider
-    //Selected topics
-    //Questions
+
     const [userDetails, setUserDetails] = useState({});
     const [discipline,setDiscipline] = useState();
     const [progress, setProgress] = useState('0');
@@ -24,20 +19,16 @@ const CapabilityContainer = () => {
     const [selectedTopic, setSelectedTopic] = useState(null);
     const [filteredQuestions, setFilteredQuestions] = useState('');
     const [questions, setQuestions] = useState([]);
-    const [topics, setTopics] = useState(
-    [{ name: 'Understand', key: 'topic-1', completed: 'notCompleted' },
-    { name: 'Incubate', key: 'topic-2', completed: 'notCompleted' },
-    { name: 'Develop', key: 'topic-3', completed: 'notCompleted' },
-    { name: 'Deploy', key: 'topic-4', completed: 'notCompleted' },
-    { name: 'General', key: 'topic-5', completed: 'notCompleted' },]);
+    const [topics, setTopics] = useState();
     const [completedTopics, setCompletedTopics] = useState(false);
+    const [skills,setSkills] = useState();
 
 
     // set progress bar set up on load
     useEffect(async() => {
-        setProgressBar();
         setQuestions(await fetchData('questions'));
-        // fetchData('teams')
+        setTopics(await fetchData('topics'));
+        setSkills(await fetchData('skills'));
     }, []);
 
     // if progress is 100% completed set completed topics variable to true. only checks this when progress state is changed
@@ -50,8 +41,9 @@ const CapabilityContainer = () => {
 
     // when user details is passed back from credentials set user details and set loading bar to true (as it will be navigating to topics page as well)
     const handleUserInput = ({ userDetails }) => {
-        setDiscipline(userDetails.discipline);
+        setDiscipline({name:userDetails.discipline, _id:userDetails.disciplineId});
         delete userDetails.discipline;
+        delete userDetails.team;
         setUserDetails(userDetails);
         setLoadingBarRequired(true);
 
