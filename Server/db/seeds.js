@@ -5,105 +5,105 @@ db.dropDatabase();
 db.questions.insertMany([
     {
         name: 'Understand',
-        value: '0',
+        _id: 'question-1',
         text: 'How confident are you with Strategic Planning?',
         description: 'Researching, creating and agreeing a vision to align actions, plans and people from an engineering perspective with I&W strategy & objectives',
         keyword: 'Strategic Planning'
     },
     {
         name: 'Understand',
-        value: '0',
+        _id: 'question-2',
         text: 'How confident are you with Enterprise Architecture?',
         description: 'Aligning I&W and the Labs technology strategy with our roadmap and documenting this using architectural models.',
         keyword: 'Enterprise Architecture'
     },
     {
         name: 'Understand',
-        value: '0',
+        _id: 'question-3',
         text: 'How confident are you with Emerging Technology Monitoring?',
         description: 'Identifying and assessing new and emerging technologies, products, services, methods and techniques.',
         keyword: 'Emerging Technology Monitoring'
     },
     {
         name: 'Incubate',
-        value: '0',
+        _id: 'question-4',
         text: 'How confident are you with JavaScript',
         description: 'Scripting language enabling dynamic updating content',
         keyword: 'JavaScript'
     },
     {
         name: 'Incubate',
-        value: '0',
+        _id: 'question-5',
         text: 'How confident are you with Solution Architecture',
         description: '',
         keyword: 'Solution Architecture'
     },
     {
         name: 'Incubate',
-        value: '0',
+        _id: 'question-6',
         text: 'How confident are you with Risk Management',
         description: '',
         keyword: 'Risk Management'
     },
     {
         name: 'Develop',
-        value: '0',
+        _id: 'question-7',
         text: 'How confident are you with Prioritisation',
         description: '',
         keyword: 'Prioritisation'
     },
     {
         name: 'Develop',
-        value: '0',
+        _id: 'question-8',
         text: 'How confident are you with React Testing Library',
         description: '',
         keyword: 'React Testing Library'
     },
     {
         name: 'Develop',
-        value: '0',
+        _id: 'question-9',
         text: 'How confident are you with Styled Components',
         description: '',
         keyword: 'Styled Components'
     },
     {
         name: 'Deploy',
-        value: '0',
+        _id: 'question-10',
         text: 'How confident are you with Deploy',
         description: '',
         keyword: 'Deploy'
     },
     {
         name: 'Deploy',
-        value: '0',
+        _id: 'question-11',
         text: 'How confident are you with Deploy',
         description: '',
         keyword: 'Deploy2'
     },
     {
         name: 'Deploy',
-        value: '0',
+        _id: 'question-12',
         text: 'How confident are you with Deploy',
         description: '',
         keyword: 'Deploy3'
     },
     {
         name: 'General',
-        value: '0',
+        _id: 'question-13',
         text: 'How confident are you with Communicating to Stakeholders',
         description: '',
         keyword: 'Communication'
     },
     {
         name: 'General',
-        value: '0',
+        _id: 'question-14',
         text: 'How confident are you with Communicating to Stakeholders',
         description: '',
         keyword: 'Communication2'
     },
     {
         name: 'General',
-        value: '0',
+        _id: 'question-15',
         text: 'How confident are you with Communicating to Stakeholders',
         description: '',
         keyword: 'Communication3'
@@ -304,3 +304,11 @@ db.users.insertMany([
         teamId: 'team-1',
     },
 ]);
+
+db.answers.insertMany([
+    {
+        questionId: 'Strategic Planning',
+        userId: 'test@mail.com',
+        value: '100',
+    },
+])

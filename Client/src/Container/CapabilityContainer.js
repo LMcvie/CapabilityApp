@@ -22,6 +22,7 @@ const CapabilityContainer = () => {
     const [topics, setTopics] = useState();
     const [completedTopics, setCompletedTopics] = useState(false);
     const [skills,setSkills] = useState();
+    const [answers,setAnswers] = useState([]); //might not be used
 
 
     // set progress bar set up on load
@@ -29,6 +30,7 @@ const CapabilityContainer = () => {
         setQuestions(await fetchData('questions'));
         setTopics(await fetchData('topics'));
         setSkills(await fetchData('skills'));
+        setAnswers(await fetchData('answers')); // just for testing retrieval of answers for return journey not being used currently
     }, []);
 
     // if progress is 100% completed set completed topics variable to true. only checks this when progress state is changed
@@ -151,7 +153,7 @@ const CapabilityContainer = () => {
                 <Routes>
                     <Route path="/CapabilityApp" element={<MenuPage onUserSubmit={(userDetails) => handleUserInput(userDetails)} />} />
                     <Route path="/CapabilityApp/Topics" element={<TopicsPage topics={topics} onTopicSelect={(selectedTopic) => handleSelectedTopic(selectedTopic)} completedTopics={completedTopics} toggleBar={() => toggleBar()} />} />
-                    <Route path="/CapabilityApp/Questions" element={<QuestionPage questions={filteredQuestions} onAnswerSubmit={(updatedQuestions) => onAnswerSubmit(updatedQuestions)} />} />
+                    <Route path="/CapabilityApp/Questions" element={<QuestionPage questions={filteredQuestions} answers = {answers} onAnswerSubmit={(updatedQuestions) => onAnswerSubmit(updatedQuestions)} />} />
                     <Route path="/CapabilityApp/Summary" element={<SummaryPage questions = {questions} topics = {topics} userDetails = {userDetails}/>} />
                     <Route path="/*" element={<NotFoundPage />} />
                 </Routes>
