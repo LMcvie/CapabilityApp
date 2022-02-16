@@ -7,13 +7,13 @@ import TopicsPage from '../Screens/TopicsPage.js';
 import NotFoundPage from '../Screens/NotFoundPage.js';
 import './CapabilityContainer.css';
 import ProgressBar from '../Components/ProgressBar.js'
-import {fetchData} from '../Helper/CapabilityService.js';
+import { fetchData, fetchByFilter, fetchAll } from '../Helper/CapabilityService.js';
 
 const CapabilityContainer = () => {
 
 
     const [userDetails, setUserDetails] = useState({});
-    const [discipline,setDiscipline] = useState();
+    const [discipline, setDiscipline] = useState();
     const [progress, setProgress] = useState('0');
     const [loadingBarRequired, setLoadingBarRequired] = useState(false);
     const [selectedTopic, setSelectedTopic] = useState(null);
@@ -21,17 +21,20 @@ const CapabilityContainer = () => {
     const [questions, setQuestions] = useState([]);
     const [topics, setTopics] = useState();
     const [completedTopics, setCompletedTopics] = useState(false);
-    const [skills,setSkills] = useState();
-    const [answers,setAnswers] = useState([]); //might not be used
-
+    const [skills, setSkills] = useState();
+    const [answers, setAnswers] = useState([]); //might not be used
 
     // set progress bar set up on load
-    useEffect(async() => {
-        setQuestions(await fetchData('questions'));
-        setTopics(await fetchData('topics'));
-        setSkills(await fetchData('skills'));
-        setAnswers(await fetchData('answers')); // just for testing retrieval of answers for return journey not being used currently
-    }, []);
+    useEffect(async () => {
+        if (discipline) {
+            getData();
+            // setTopics(await fetchData('topics'));
+            // setSkills(await fetchByFilter('skills', `disciplineId=${discipline._id}`)); // search skills collection and filter by 2nd param
+            // setQuestions(await fetchByFilter('questions',`skillId=skill-2`));
+            // setAnswers(await fetchData('answers')); // just for testing retrieval of answers for return journey not being used currently
+
+        }
+    }, [discipline]);
 
     // if progress is 100% completed set completed topics variable to true. only checks this when progress state is changed
     useEffect(() => {
@@ -40,14 +43,25 @@ const CapabilityContainer = () => {
         }
     }, [progress]);
 
+    const getData = async () => {
+        setTopics(await fetchData('topics'));
+
+        setSkills(await fetchByFilter('skills', `disciplineId=${discipline._id}`));
+
+        setQuestions(await fetchAll('questions', skills, 'skillId='))
+
+
+        // setQuestions(await fetchByFilter('questions',`skillId=skill-2`));
+}
 
     // when user details is passed back from credentials set user details and set loading bar to true (as it will be navigating to topics page as well)
     const handleUserInput = ({ userDetails }) => {
-        setDiscipline({name:userDetails.discipline, _id:userDetails.disciplineId});
+        setDiscipline({ name: userDetails.discipline, _id: userDetails.disciplineId });
         delete userDetails.discipline;
         delete userDetails.team;
         setUserDetails(userDetails);
         setLoadingBarRequired(true);
+
 
     }
 
@@ -64,7 +78,7 @@ const CapabilityContainer = () => {
         setProgressBar();
 
     }
-   //Update the topic menu as the topics are selected 
+    //Update the topic menu as the topics are selected 
     const handleSelectedTopic = ({ selectedTopic }) => {
         selectedTopic = selectedTopic.replace(/ /g, '');
         setSelectedTopic(selectedTopic);
@@ -81,8 +95,8 @@ const CapabilityContainer = () => {
         setProgress(Math.round((filteredTopics.length / topics.length) * 100));
 
     }
- 
- 
+
+
     //Store the data once the answers are submitted 
     const onAnswerSubmit = (updatedQuestions) => {
         let testQuestions = questions;
@@ -97,7 +111,7 @@ const CapabilityContainer = () => {
         updateQuestions(selectedTopic);
         getTopicAverage(updatedQuestions);
 
-       
+
 
         updateCompletedTopics();
 
@@ -110,19 +124,19 @@ const CapabilityContainer = () => {
 
         let tempId = tempTopics.findIndex((test) => {
             return test.name === selectedTopic;
-        
+
         });
 
-        if (updatedQuestions.length ===1) {
-        
+        if (updatedQuestions.length === 1) {
+
             tempTopics[tempId].value = updatedQuestions[0].value;
         }
-        else{
-             let total = updatedQuestions.reduce((runningTotal, number) => ({value: parseInt(runningTotal.value) + parseInt(number.value)})); 
+        else {
+            let total = updatedQuestions.reduce((runningTotal, number) => ({ value: parseInt(runningTotal.value) + parseInt(number.value) }));
 
-             tempTopics[tempId].value = Math.floor(total.value/updatedQuestions.length);
+            tempTopics[tempId].value = Math.floor(total.value / updatedQuestions.length);
         }
-        
+
     }
 
     // if there is no selected topic return and don't update. filter the questions based on the selected topic and set the filter questions state to it. This can then be passed to the questions page
@@ -135,8 +149,8 @@ const CapabilityContainer = () => {
         });
         setFilteredQuestions(topicQuestions);
     }
-    
-    
+
+
     // calls the progress bar on the required screen (sets the visibility of the progress bar)
     const toggleBar = () => {
         setLoadingBarRequired(!loadingBarRequired);
@@ -153,8 +167,8 @@ const CapabilityContainer = () => {
                 <Routes>
                     <Route path="/CapabilityApp" element={<MenuPage onUserSubmit={(userDetails) => handleUserInput(userDetails)} />} />
                     <Route path="/CapabilityApp/Topics" element={<TopicsPage topics={topics} onTopicSelect={(selectedTopic) => handleSelectedTopic(selectedTopic)} completedTopics={completedTopics} toggleBar={() => toggleBar()} />} />
-                    <Route path="/CapabilityApp/Questions" element={<QuestionPage questions={filteredQuestions} answers = {answers} onAnswerSubmit={(updatedQuestions) => onAnswerSubmit(updatedQuestions)} />} />
-                    <Route path="/CapabilityApp/Summary" element={<SummaryPage questions = {questions} topics = {topics} userDetails = {userDetails}/>} />
+                    <Route path="/CapabilityApp/Questions" element={<QuestionPage questions={filteredQuestions} answers={answers} onAnswerSubmit={(updatedQuestions) => onAnswerSubmit(updatedQuestions)} />} />
+                    <Route path="/CapabilityApp/Summary" element={<SummaryPage questions={questions} topics={topics} userDetails={userDetails} />} />
                     <Route path="/*" element={<NotFoundPage />} />
                 </Routes>
             </Router>

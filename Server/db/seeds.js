@@ -6,6 +6,7 @@ db.questions.insertMany([
     {
         name: 'Understand',
         _id: 'question-1',
+        skillId:'skill-1',
         text: 'How confident are you with Strategic Planning?',
         description: 'Researching, creating and agreeing a vision to align actions, plans and people from an engineering perspective with I&W strategy & objectives',
         keyword: 'Strategic Planning'
@@ -13,6 +14,7 @@ db.questions.insertMany([
     {
         name: 'Understand',
         _id: 'question-2',
+        skillId:'skill-1',
         text: 'How confident are you with Enterprise Architecture?',
         description: 'Aligning I&W and the Labs technology strategy with our roadmap and documenting this using architectural models.',
         keyword: 'Enterprise Architecture'
@@ -20,6 +22,7 @@ db.questions.insertMany([
     {
         name: 'Understand',
         _id: 'question-3',
+        skillId:'skill-1',
         text: 'How confident are you with Emerging Technology Monitoring?',
         description: 'Identifying and assessing new and emerging technologies, products, services, methods and techniques.',
         keyword: 'Emerging Technology Monitoring'
@@ -27,6 +30,7 @@ db.questions.insertMany([
     {
         name: 'Incubate',
         _id: 'question-4',
+        skillId:'skill-2',
         text: 'How confident are you with JavaScript',
         description: 'Scripting language enabling dynamic updating content',
         keyword: 'JavaScript'
@@ -34,6 +38,7 @@ db.questions.insertMany([
     {
         name: 'Incubate',
         _id: 'question-5',
+        skillId:'skill-2',
         text: 'How confident are you with Solution Architecture',
         description: '',
         keyword: 'Solution Architecture'
@@ -41,6 +46,7 @@ db.questions.insertMany([
     {
         name: 'Incubate',
         _id: 'question-6',
+        skillId:'skill-2',
         text: 'How confident are you with Risk Management',
         description: '',
         keyword: 'Risk Management'
@@ -48,6 +54,7 @@ db.questions.insertMany([
     {
         name: 'Develop',
         _id: 'question-7',
+        skillId:'skill-3',
         text: 'How confident are you with Prioritisation',
         description: '',
         keyword: 'Prioritisation'
@@ -55,6 +62,7 @@ db.questions.insertMany([
     {
         name: 'Develop',
         _id: 'question-8',
+        skillId:'skill-3',
         text: 'How confident are you with React Testing Library',
         description: '',
         keyword: 'React Testing Library'
@@ -62,6 +70,7 @@ db.questions.insertMany([
     {
         name: 'Develop',
         _id: 'question-9',
+        skillId:'skill-3',
         text: 'How confident are you with Styled Components',
         description: '',
         keyword: 'Styled Components'
@@ -69,6 +78,7 @@ db.questions.insertMany([
     {
         name: 'Deploy',
         _id: 'question-10',
+        skillId:'skill-4',
         text: 'How confident are you with Deploy',
         description: '',
         keyword: 'Deploy'
@@ -76,6 +86,7 @@ db.questions.insertMany([
     {
         name: 'Deploy',
         _id: 'question-11',
+        skillId:'skill-4',
         text: 'How confident are you with Deploy',
         description: '',
         keyword: 'Deploy2'
@@ -83,6 +94,7 @@ db.questions.insertMany([
     {
         name: 'Deploy',
         _id: 'question-12',
+        skillId:'skill-4',
         text: 'How confident are you with Deploy',
         description: '',
         keyword: 'Deploy3'
@@ -90,6 +102,7 @@ db.questions.insertMany([
     {
         name: 'General',
         _id: 'question-13',
+        skillId:'skill-5',
         text: 'How confident are you with Communicating to Stakeholders',
         description: '',
         keyword: 'Communication'
@@ -97,6 +110,7 @@ db.questions.insertMany([
     {
         name: 'General',
         _id: 'question-14',
+        skillId:'skill-5',
         text: 'How confident are you with Communicating to Stakeholders',
         description: '',
         keyword: 'Communication2'
@@ -104,6 +118,7 @@ db.questions.insertMany([
     {
         name: 'General',
         _id: 'question-15',
+        skillId:'skill-5',
         text: 'How confident are you with Communicating to Stakeholders',
         description: '',
         keyword: 'Communication3'
@@ -123,19 +138,19 @@ db.skills.insertMany([
         {
             name: 'Strategic Planning',
             _id: 'skill-1',
-            discplineId: 'discipline-5',
+            disciplineId:'discipline-3',
             optimusId: 'Understand',
         },
         {
             name: 'Enterprise Architecture',
             _id: 'skill-2',
-            disciplineId: 'discipline-5',
+            disciplineId:'discipline-3',
             optimusId: 'Understand',
         },
         {
             name: 'Emerging Technology Monitoring',
             _id: 'skill-3',
-            disciplineId: 'discipline-5',
+            disciplineId:'discipline-3',
             optimusId: 'Understand',
         },
         {
@@ -207,7 +222,7 @@ db.skills.insertMany([
         {
             name: 'Communication',
             _id: 'skill-15',
-            disciplineId: 'discipline-5',
+            disciplineId:'discipline-5',
             optimusId: 'General',
         },
 ])

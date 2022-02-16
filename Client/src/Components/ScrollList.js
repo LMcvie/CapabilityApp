@@ -8,7 +8,7 @@ const ScrollList = ({ topics, onTopicSubmit }) => {
 
     const [selectedTopic, setSelectedTopic] = useState();
     const [previousSelection, setPreviousSelection] = useState(null);
-
+    let buttonsList;
     let navigate = useNavigate();
     const handleClick = (event) => {
 
@@ -33,14 +33,17 @@ const ScrollList = ({ topics, onTopicSubmit }) => {
     }
 
     // generate every topic from list as a scrollable button
-    let buttonsList = topics.map((topic, index) => {
+    if (topics) {
+
+   
+    buttonsList = topics.map((topic, index) => {
         return (
             <button className={topic.completed} onClick={handleClick} key={index} value={index}>{topic.name} </button>
         );
 
 
     });
-
+}
     // when select button is pressed send the selectedTopic back to the container
     const handleSelect = (event) => {
         event.preventDefault();
