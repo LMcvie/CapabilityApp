@@ -8,6 +8,7 @@ import NotFoundPage from '../Screens/NotFoundPage.js';
 import './CapabilityContainer.css';
 import ProgressBar from '../Components/ProgressBar.js'
 import { fetchData, fetchByFilter, fetchAll } from '../Helper/CapabilityService.js';
+import { optimus } from '../Helper/constants.js';
 
 const CapabilityContainer = () => {
 
@@ -28,11 +29,6 @@ const CapabilityContainer = () => {
     useEffect(async () => {
         if (discipline) {
             getData();
-            // setTopics(await fetchData('topics'));
-            // setSkills(await fetchByFilter('skills', `disciplineId=${discipline._id}`)); // search skills collection and filter by 2nd param
-            // setQuestions(await fetchByFilter('questions',`skillId=skill-2`));
-            // setAnswers(await fetchData('answers')); // just for testing retrieval of answers for return journey not being used currently
-
         }
     }, [discipline]);
 
@@ -44,21 +40,20 @@ const CapabilityContainer = () => {
     }, [progress]);
 
     const getData = async () => {
-        setTopics(await fetchData('topics'));
 
-        setSkills(await fetchByFilter('skills', `disciplineId=${discipline._id}`));
+        setTopics(optimus);
 
-        setQuestions(await fetchAll('questions', skills, 'skillId='))
+        let tempSkills = await fetchByFilter('skills', `disciplineId=${discipline._id}`);
+        setSkills(tempSkills);
 
+        setQuestions(await fetchAll('questions', tempSkills, 'skillId='))
 
-        // setQuestions(await fetchByFilter('questions',`skillId=skill-2`));
-}
+    }
 
     // when user details is passed back from credentials set user details and set loading bar to true (as it will be navigating to topics page as well)
     const handleUserInput = ({ userDetails }) => {
         setDiscipline({ name: userDetails.discipline, _id: userDetails.disciplineId });
         delete userDetails.discipline;
-        delete userDetails.team;
         setUserDetails(userDetails);
         setLoadingBarRequired(true);
 

@@ -33,7 +33,6 @@ const createRouter = function (collection) {
 
   router.get('/', (req, res) => {
     const id = req.query;
-    console.log(id);
     collection
       .find(id)
       .toArray()

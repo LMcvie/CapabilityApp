@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Credentials.css";
 import { fetchData } from '../Helper/CapabilityService.js';
+import { disciplinesGroups } from '../Helper/constants.js';
 
 const Credentials = ({ onUserSubmit }) => {
 
@@ -11,7 +12,7 @@ const Credentials = ({ onUserSubmit }) => {
 
     useEffect(async () => {
         setTeams(await fetchData('teams'));
-        setDisciplines(await fetchData('disciplines'));
+        setDisciplines(disciplinesGroups);
     }, []);
 
     const [userDetails, setUserDetails] = useState({});
@@ -28,15 +29,20 @@ const Credentials = ({ onUserSubmit }) => {
 
     const handleTeamChange = (event) => {
         let updatedDetails = userDetails;
-        updatedDetails.team = event.target.value;
-        updatedDetails.teamId = `team-${event.target.selectedIndex}`;
+        let tempTeam = teams.find(team => {
+            return team.name === event.target.value;
+        });
+        updatedDetails.teamId = tempTeam._id;
         setUserDetails(updatedDetails);
     }
 
     const handleDisciplineChange = (event) => {
         let updatedDetails = userDetails;
-        updatedDetails.discipline = event.target.value;
-        updatedDetails.disciplineId = `discipline-${event.target.selectedIndex}`;
+        let tempDiscipline = disciplines.find(discipline => {
+            return discipline.name === event.target.value;
+        });
+        updatedDetails.discipline = tempDiscipline.name;
+        updatedDetails.disciplineId = tempDiscipline._id;
         setUserDetails(updatedDetails);
     }
 
@@ -58,7 +64,7 @@ const Credentials = ({ onUserSubmit }) => {
     if (disciplines) {
         disciplineSelect = disciplines.map((discipline) => {
             return (
-                <option value={discipline.name} key={discipline._id}>{discipline.name}</option>
+                <option value={discipline.name} id={discipline._id} key={discipline._id}>{discipline.name}</option>
             )
         });
     }

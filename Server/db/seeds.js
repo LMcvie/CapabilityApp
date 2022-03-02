@@ -6,31 +6,31 @@ db.questions.insertMany([
     {
         name: 'Understand',
         _id: 'question-1',
-        skillId:'skill-1',
+        skillId:'StratPlan',
         text: 'How confident are you with Strategic Planning?',
         description: 'Researching, creating and agreeing a vision to align actions, plans and people from an engineering perspective with I&W strategy & objectives',
-        keyword: 'Strategic Planning'
+        keyword: 'Strategic Planning',
     },
     {
         name: 'Understand',
         _id: 'question-2',
-        skillId:'skill-1',
+        skillId:'EnterpriseArch',
         text: 'How confident are you with Enterprise Architecture?',
         description: 'Aligning I&W and the Labs technology strategy with our roadmap and documenting this using architectural models.',
-        keyword: 'Enterprise Architecture'
+        keyword: 'Enterprise Architecture',
     },
     {
         name: 'Understand',
         _id: 'question-3',
-        skillId:'skill-1',
+        skillId:'EmergingTech',
         text: 'How confident are you with Emerging Technology Monitoring?',
         description: 'Identifying and assessing new and emerging technologies, products, services, methods and techniques.',
-        keyword: 'Emerging Technology Monitoring'
+        keyword: 'Emerging Technology Monitoring',
     },
     {
         name: 'Incubate',
         _id: 'question-4',
-        skillId:'skill-2',
+        skillId:'JS',
         text: 'How confident are you with JavaScript',
         description: 'Scripting language enabling dynamic updating content',
         keyword: 'JavaScript'
@@ -38,7 +38,7 @@ db.questions.insertMany([
     {
         name: 'Incubate',
         _id: 'question-5',
-        skillId:'skill-2',
+        skillId:'SolutionArch',
         text: 'How confident are you with Solution Architecture',
         description: '',
         keyword: 'Solution Architecture'
@@ -46,7 +46,7 @@ db.questions.insertMany([
     {
         name: 'Incubate',
         _id: 'question-6',
-        skillId:'skill-2',
+        skillId:'RiskMan',
         text: 'How confident are you with Risk Management',
         description: '',
         keyword: 'Risk Management'
@@ -54,15 +54,15 @@ db.questions.insertMany([
     {
         name: 'Develop',
         _id: 'question-7',
-        skillId:'skill-3',
+        skillId:'Prioritise',
         text: 'How confident are you with Prioritisation',
         description: '',
-        keyword: 'Prioritisation'
+        keyword: 'Prioritisation',
     },
     {
         name: 'Develop',
         _id: 'question-8',
-        skillId:'skill-3',
+        skillId:'ReactTesting',
         text: 'How confident are you with React Testing Library',
         description: '',
         keyword: 'React Testing Library'
@@ -70,7 +70,7 @@ db.questions.insertMany([
     {
         name: 'Develop',
         _id: 'question-9',
-        skillId:'skill-3',
+        skillId:'StyleComponents',
         text: 'How confident are you with Styled Components',
         description: '',
         keyword: 'Styled Components'
@@ -78,7 +78,7 @@ db.questions.insertMany([
     {
         name: 'Deploy',
         _id: 'question-10',
-        skillId:'skill-4',
+        skillId:'Deploy',
         text: 'How confident are you with Deploy',
         description: '',
         keyword: 'Deploy'
@@ -86,7 +86,7 @@ db.questions.insertMany([
     {
         name: 'Deploy',
         _id: 'question-11',
-        skillId:'skill-4',
+        skillId:'Deploy',
         text: 'How confident are you with Deploy',
         description: '',
         keyword: 'Deploy2'
@@ -94,7 +94,7 @@ db.questions.insertMany([
     {
         name: 'Deploy',
         _id: 'question-12',
-        skillId:'skill-4',
+        skillId:'Deploy',
         text: 'How confident are you with Deploy',
         description: '',
         keyword: 'Deploy3'
@@ -102,7 +102,7 @@ db.questions.insertMany([
     {
         name: 'General',
         _id: 'question-13',
-        skillId:'skill-5',
+        skillId:'Comms',
         text: 'How confident are you with Communicating to Stakeholders',
         description: '',
         keyword: 'Communication'
@@ -110,7 +110,7 @@ db.questions.insertMany([
     {
         name: 'General',
         _id: 'question-14',
-        skillId:'skill-5',
+        skillId:'test',
         text: 'How confident are you with Communicating to Stakeholders',
         description: '',
         keyword: 'Communication2'
@@ -118,7 +118,7 @@ db.questions.insertMany([
     {
         name: 'General',
         _id: 'question-15',
-        skillId:'skill-5',
+        skillId:'test',
         text: 'How confident are you with Communicating to Stakeholders',
         description: '',
         keyword: 'Communication3'
@@ -126,103 +126,95 @@ db.questions.insertMany([
 
 ]);
 
-db.topics.insertMany([
-    { name: 'Understand', _id: 'topic-1', completed: 'notCompleted' },
-    { name: 'Incubate', _id: 'topic-2', completed: 'notCompleted' },
-    { name: 'Develop', _id: 'topic-3', completed: 'notCompleted' },
-    { name: 'Deploy', _id: 'topic-4', completed: 'notCompleted' },
-    { name: 'General', _id: 'topic-5', completed: 'notCompleted' },
-]);
-
 db.skills.insertMany([
         {
             name: 'Strategic Planning',
-            _id: 'skill-1',
-            disciplineId:'discipline-3',
+            _id: 'StratPlan',
+            disciplineId:'SDev',
             optimusId: 'Understand',
         },
         {
             name: 'Enterprise Architecture',
-            _id: 'skill-2',
-            disciplineId:'discipline-3',
+            _id: 'EnterpriseArch',
+            disciplineId:'SDev',
             optimusId: 'Understand',
         },
         {
             name: 'Emerging Technology Monitoring',
-            _id: 'skill-3',
-            disciplineId:'discipline-3',
+            _id: 'EmergingTech',
+            disciplineId:'SDev',
             optimusId: 'Understand',
         },
         {
             name: 'JavaScript',
-            _id: 'skill-4',
-            disciplineId: 'discipline-5',
+            _id: 'JS',
+            disciplineId: 'SDev',
             optimusId: 'Incubate',
         },
         {
             name: 'Solution Architecture',
-            _id: 'skill-5',
-            disciplineId: 'discipline-5',
+            _id: 'SolutionArch',
+            disciplineId: 'SDev',
             optimusId: 'Incubate',
         },
         {
             name: 'Risk Management',
-            _id: 'skill-6',
-            disciplineId: 'discipline-5',
+            _id: 'RiskMan',
+            disciplineId: 'SDev',
             optimusId: 'Incubate',
         },
         {
             name: 'Prioritisation',
-            _id: 'skill-7',
-            disciplineId: 'discipline-5',
+            _id: 'Prioritise',
+            disciplineId: 'SDev',
             optimusId: 'Develop',
         },
         {
             name: 'React Testing Library',
-            _id: 'skill-8',
-            disciplineId: 'discipline-5',
+            _id: 'ReactTesting',
+            disciplineId: 'SDev',
             optimusId: 'Develop',
         },
         {
             name: 'Stylised Components',
-            _id: 'skill-9',
-            disciplineId: 'discipline-5',
+            _id: 'StyleComponents',
+            disciplineId: 'SDev',
             optimusId: 'Develop',
         },
         {
             name: 'Deploy',
-            _id: 'skill-10',
-            disciplineId: 'discipline-5',
+            _id: 'Deploy',
+            disciplineId: 'SDev',
             optimusId: 'Deploy',
         },
         {
             name: 'Deploy',
-            _id: 'skill-11',
-            disciplineId: 'discipline-5',
+            _id: 'tester3',
+            disciplineId: 'SDev',
             optimusId: 'Deploy',
         },
         {
             name: 'Deploy',
-            _id: 'skill-12',
-            disciplineId: 'discipline-5',
+            _id: 'tester2',
+            disciplineId: 'SDev',
             optimusId: 'Deploy',
         },
         {
-            name: 'Emerging Technology Monitoring',
-            _id: 'skill-13',
-            disciplineId: 'discipline-5',
+            name: 'Technology',
+            _id: 'Tech',
+            disciplineId: 'SDev',
             optimusId: 'General',
         },
         {
             name: 'Communication',
-            _id: 'skill-14',
-            disciplineId: 'discipline-5',
+            _id: 'Comms',
+            disciplineId: 'SDev',
             optimusId: 'General',
         },
         {
-            name: 'Communication',
-            _id: 'skill-15',
-            disciplineId:'discipline-5',
+            name: 'test',
+            _id: 'test',
+            disciplineId: 'SDev',
             optimusId: 'General',
         },
 ])
@@ -230,93 +222,70 @@ db.skills.insertMany([
 
 db.teams.insertMany([
     {
-        _id: 'team-1',
+        _id: 'Ganon',
         name: 'Ganon',
     },
     {
-        _id: 'team-2',
+        _id: 'Layton',
         name: 'Layton',
     },
     {
-        _id: 'team-3',
+        _id: 'Link',
         name: 'Link',
     },
     {
-        _id: 'team-4',
+        _id: 'MineSweep',
         name: 'Minesweeper',
     },
     {
-        _id: 'team-5',
+        _id: 'NWoW',
         name: 'NWoW',
     },
     {
-        _id: 'team-6',
+        _id: 'Pikachu',
         name: 'Pikachu',
     },
     {
-        _id: 'team-7',
+        _id: 'QE',
         name: 'Quality Engineering',
     },
     {
-        _id: 'team-8',
+        _id: 'Shield',
         name: 'S.H.I.E.L.D',
     },
     {
-        _id: 'team-9',
+        _id: 'Sonic',
         name: 'Sonic',
     },
     {
-        _id: 'team-10',
+        _id: 'Tetris',
         name: 'Tetris',
     },
     {
-        _id: 'team-11',
+        _id: 'Thunderbirds',
         name: 'Thunderbirds',
     },
     {
-        _id: 'team-12',
+        _id: 'Yoshi',
         name: 'Yoshi',
     },
     {
-        _id: 'team-13',
+        _id: 'Starfox',
         name: 'Starfox',
     },
     {
-        _id: 'team-14',
+        _id: 'N/A',
         name: 'N/A',
     },
 
-]);
-
-db.disciplines.insertMany([
-    {
-        name: 'Business Analyst',
-        _id: 'discipline-1',
-    },
-    {
-        name: 'Designer',
-        _id: 'dicsipline-2'
-    },
-    {
-        name: 'Product Owner',
-        _id: 'dicsipline-3'
-    },
-    {
-        name: 'Scrum Master',
-        _id: 'dicsipline-4'
-    },
-    {
-        name: 'Software Developer',
-        _id: 'dicsipline-5'
-    },
 ]);
 
 
 db.users.insertMany([
     {
         _id: 'test@mail.com',
-        disciplineId: 'discipline-5',
-        teamId: 'team-1',
+        disciplineId: 'SDev',
+        teamId: 'Ganon',
     },
 ]);
 
