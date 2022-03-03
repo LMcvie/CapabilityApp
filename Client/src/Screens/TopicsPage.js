@@ -5,7 +5,7 @@ import './TopicsPage.css';
 
 //For a topic being selected and completed allow the user to go back to the Menu of topics
 
-const TopicsPage = ({topics, onTopicSelect, completedTopics, toggleBar}) => {
+const TopicsPage = ({topics, onTopicSelect, completedTopics, toggleBar, submitData}) => {
 
     const [topicButtonText,setTopicButtonText] = useState('Back to Menu');
 

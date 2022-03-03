@@ -21,7 +21,7 @@ const Credentials = ({ onUserSubmit }) => {
 
     const handleEmailChange = (event) => {
         let updatedDetails = userDetails;
-        updatedDetails.email = event.target.value;
+        updatedDetails._id = event.target.value;
         setUserDetails(updatedDetails);
 
     }

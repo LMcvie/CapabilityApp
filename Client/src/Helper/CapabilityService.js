@@ -42,3 +42,22 @@ export const fetchAll = async (collection, filterArray,filterTerm) => {
     }
 
 }
+
+
+export const sendData = async (collection,payload) => {
+    return fetch(`${baseURL}${collection}`, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => res.json())
+}
+
+export const updateData = async(collection,payload,id) => {
+    return fetch(`${baseURL}${collection}/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => res.json())
+}

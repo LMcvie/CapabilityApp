@@ -40,14 +40,10 @@ const CapabilityContainer = () => {
     }, [progress]);
 
     const getData = async () => {
-
         setTopics(optimus);
-
         let tempSkills = await fetchByFilter('skills', `disciplineId=${discipline._id}`);
         setSkills(tempSkills);
-
         setQuestions(await fetchAll('questions', tempSkills, 'skillId='))
-
     }
 
     // when user details is passed back from credentials set user details and set loading bar to true (as it will be navigating to topics page as well)
@@ -56,14 +52,11 @@ const CapabilityContainer = () => {
         delete userDetails.discipline;
         setUserDetails(userDetails);
         setLoadingBarRequired(true);
-
-
     }
 
     // update topics array with which topics are completed and then updates the progress bar state
     const updateCompletedTopics = () => {
         let tempTopics = topics;
-
         topics.map((topic, index) => {
             if (topic.name === selectedTopic) {
                 tempTopics[index].completed = 'completed';
@@ -71,14 +64,12 @@ const CapabilityContainer = () => {
         });
         setTopics(tempTopics);
         setProgressBar();
-
     }
     //Update the topic menu as the topics are selected 
     const handleSelectedTopic = ({ selectedTopic }) => {
         selectedTopic = selectedTopic.replace(/ /g, '');
         setSelectedTopic(selectedTopic);
         updateQuestions(selectedTopic);
-
     }
 
     //calculate the percentage of the topics that show completed then set the progress bar to the integer rounded value
@@ -86,17 +77,14 @@ const CapabilityContainer = () => {
         let filteredTopics = topics.filter((topic) => {
             return topic.completed.includes('completed');
         });
-
         setProgress(Math.round((filteredTopics.length / topics.length) * 100));
 
     }
-
 
     //Store the data once the answers are submitted 
     const onAnswerSubmit = (updatedQuestions) => {
         let testQuestions = questions;
         updatedQuestions.map((question) => {
-
             let testid = questions.findIndex((test) => {
                 return test.keyword === question.keyword;
             })
@@ -105,33 +93,25 @@ const CapabilityContainer = () => {
         setQuestions(testQuestions);
         updateQuestions(selectedTopic);
         getTopicAverage(updatedQuestions);
-
-
-
         updateCompletedTopics();
 
     }
 
     //get the average result for the skill/topic and store it in the topic object
     const getTopicAverage = (updatedQuestions) => {
-
         let tempTopics = topics;
-
         let tempId = tempTopics.findIndex((test) => {
             return test.name === selectedTopic;
 
         });
-
         if (updatedQuestions.length === 1) {
 
             tempTopics[tempId].value = updatedQuestions[0].value;
         }
         else {
             let total = updatedQuestions.reduce((runningTotal, number) => ({ value: parseInt(runningTotal.value) + parseInt(number.value) }));
-
             tempTopics[tempId].value = Math.floor(total.value / updatedQuestions.length);
         }
-
     }
 
     // if there is no selected topic return and don't update. filter the questions based on the selected topic and set the filter questions state to it. This can then be passed to the questions page
@@ -151,7 +131,9 @@ const CapabilityContainer = () => {
         setLoadingBarRequired(!loadingBarRequired);
     }
 
-
+    const submitData = () => {
+        
+    }
 
     //The default page is the menu page with different routes leading to the matching pages
     return (
@@ -161,7 +143,7 @@ const CapabilityContainer = () => {
             <Router>
                 <Routes>
                     <Route path="/CapabilityApp" element={<MenuPage onUserSubmit={(userDetails) => handleUserInput(userDetails)} />} />
-                    <Route path="/CapabilityApp/Topics" element={<TopicsPage topics={topics} onTopicSelect={(selectedTopic) => handleSelectedTopic(selectedTopic)} completedTopics={completedTopics} toggleBar={() => toggleBar()} />} />
+                    <Route path="/CapabilityApp/Topics" element={<TopicsPage topics={topics} onTopicSelect={(selectedTopic) => handleSelectedTopic(selectedTopic)} completedTopics={completedTopics} toggleBar={() => toggleBar()} submitData={() => submitData()}/>} />
                     <Route path="/CapabilityApp/Questions" element={<QuestionPage questions={filteredQuestions} answers={answers} onAnswerSubmit={(updatedQuestions) => onAnswerSubmit(updatedQuestions)} />} />
                     <Route path="/CapabilityApp/Summary" element={<SummaryPage questions={questions} topics={topics} userDetails={userDetails} />} />
                     <Route path="/*" element={<NotFoundPage />} />
