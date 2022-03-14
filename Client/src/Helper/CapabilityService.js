@@ -30,10 +30,13 @@ export const fetchByFilter = async (collection,filter) => {
 // filterTerm: key
 // filterArray = list of the values for that key you want back
 export const fetchAll = async (collection, filterArray,filterTerm) => {
+    console.log(collection);
+    console.log(filterArray);
+    console.log(filterTerm);
     try {
         let response = await Promise.all(filterArray.map(filter => fetch(`${baseURL}${collection}/?${filterTerm}${filter._id}`)));
         let data = await Promise.all(response.map(res => res.json()));
-
+        console.log(data);
         return(data.flat());
     }
 
@@ -44,7 +47,9 @@ export const fetchAll = async (collection, filterArray,filterTerm) => {
 }
 
 
-export const sendData = async (collection,payload) => {
+
+export const sendUser = async (collection,payload) => {
+    console.log(collection);
     return fetch(`${baseURL}${collection}`, {
         method: 'POST',
         body: JSON.stringify(payload),
@@ -61,3 +66,23 @@ export const updateData = async(collection,payload,id) => {
     })
     .then(res => res.json())
 }
+
+
+export const sendAnswers = async(questions,userDetails) => {
+    let payload = questions.map((question) => {
+        return ({
+            questionId: question._id,
+            userId: userDetails._id,
+            value: question.value,
+        })
+       
+    })
+    console.log(payload);
+    // return fetch(`${baseURL}answers`, {
+    //     method: 'POST',
+    //     body: JSON.stringify(payload),
+    //     headers: { 'Content-Type': 'application/json' }
+    // })
+    // .then(res => res.json())
+}
+

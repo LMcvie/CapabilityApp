@@ -7,7 +7,7 @@ import TopicsPage from '../Screens/TopicsPage.js';
 import NotFoundPage from '../Screens/NotFoundPage.js';
 import './CapabilityContainer.css';
 import ProgressBar from '../Components/ProgressBar.js'
-import { fetchData, fetchByFilter, fetchAll } from '../Helper/CapabilityService.js';
+import {fetchByFilter, fetchAll, sendUser, sendAnswers } from '../Helper/CapabilityService.js';
 import { optimus } from '../Helper/constants.js';
 
 const CapabilityContainer = () => {
@@ -46,7 +46,6 @@ const CapabilityContainer = () => {
         setQuestions(await fetchAll('questions', tempSkills, 'skillId='))
     }
 
-    // when user details is passed back from credentials set user details and set loading bar to true (as it will be navigating to topics page as well)
     const handleUserInput = ({ userDetails }) => {
         setDiscipline({ name: userDetails.discipline, _id: userDetails.disciplineId });
         delete userDetails.discipline;
@@ -54,7 +53,6 @@ const CapabilityContainer = () => {
         setLoadingBarRequired(true);
     }
 
-    // update topics array with which topics are completed and then updates the progress bar state
     const updateCompletedTopics = () => {
         let tempTopics = topics;
         topics.map((topic, index) => {
@@ -72,7 +70,6 @@ const CapabilityContainer = () => {
         updateQuestions(selectedTopic);
     }
 
-    //calculate the percentage of the topics that show completed then set the progress bar to the integer rounded value
     const setProgressBar = () => {
         let filteredTopics = topics.filter((topic) => {
             return topic.completed.includes('completed');
@@ -81,7 +78,6 @@ const CapabilityContainer = () => {
 
     }
 
-    //Store the data once the answers are submitted 
     const onAnswerSubmit = (updatedQuestions) => {
         let testQuestions = questions;
         updatedQuestions.map((question) => {
@@ -114,7 +110,6 @@ const CapabilityContainer = () => {
         }
     }
 
-    // if there is no selected topic return and don't update. filter the questions based on the selected topic and set the filter questions state to it. This can then be passed to the questions page
     const updateQuestions = (selectedTopic) => {
         if (selectedTopic === null) {
             return;
@@ -132,7 +127,8 @@ const CapabilityContainer = () => {
     }
 
     const submitData = () => {
-        
+        sendUser('users',userDetails);
+        sendAnswers(questions,userDetails);
     }
 
     //The default page is the menu page with different routes leading to the matching pages

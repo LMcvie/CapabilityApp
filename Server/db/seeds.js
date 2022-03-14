@@ -280,7 +280,6 @@ db.teams.insertMany([
 
 ]);
 
-
 db.users.insertMany([
     {
         _id: 'test@mail.com',

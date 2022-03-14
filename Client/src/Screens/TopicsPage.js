@@ -41,6 +41,7 @@ const TopicsPage = ({topics, onTopicSelect, completedTopics, toggleBar, submitDa
     //toggle the progress bar and navigate to summary
     const handleContinue = (event) => {
         toggleBar();
+        submitData();
         navigate('/CapabilityApp/summary');
     }
 
