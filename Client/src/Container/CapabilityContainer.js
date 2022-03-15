@@ -7,7 +7,7 @@ import TopicsPage from '../Screens/TopicsPage.js';
 import NotFoundPage from '../Screens/NotFoundPage.js';
 import './CapabilityContainer.css';
 import ProgressBar from '../Components/ProgressBar.js'
-import {fetchByFilter, fetchAll, sendUser, sendAnswers } from '../Helper/CapabilityService.js';
+import {fetchByFilter, fetchAll, sendUser, sendAnswers, updateAnswers } from '../Helper/CapabilityService.js';
 import { optimus } from '../Helper/constants.js';
 
 const CapabilityContainer = () => {
@@ -23,7 +23,7 @@ const CapabilityContainer = () => {
     const [topics, setTopics] = useState();
     const [completedTopics, setCompletedTopics] = useState(false);
     const [skills, setSkills] = useState();
-    const [answers, setAnswers] = useState([]); //might not be used
+    const [returningUser,setReturningUser] = useState(false);
 
     // set progress bar set up on load
     useEffect(async () => {
@@ -43,7 +43,9 @@ const CapabilityContainer = () => {
         setTopics(optimus);
         let tempSkills = await fetchByFilter('skills', `disciplineId=${discipline._id}`);
         setSkills(tempSkills);
-        setQuestions(await fetchAll('questions', tempSkills, 'skillId='))
+        let tempQuestions = await fetchAll('questions', tempSkills, 'skillId=');
+        await setQuestions(tempQuestions);
+        checkReturningUser(userDetails._id,tempQuestions);
     }
 
     const handleUserInput = ({ userDetails }) => {
@@ -51,6 +53,24 @@ const CapabilityContainer = () => {
         delete userDetails.discipline;
         setUserDetails(userDetails);
         setLoadingBarRequired(true);
+        
+    }
+
+    const checkReturningUser = async (id,tempQuestions) => {
+        let temp = await fetchByFilter('users', `_id=${id}`);
+
+        //if user already exists
+        if (temp[0]) {
+            setReturningUser(true);
+            let tempAnswers = await fetchByFilter('answers', `userId=${id}`);
+            tempQuestions.map((question) => {
+                let tempIndex = tempAnswers.findIndex((answer) => {
+                    return answer.questionId === question._id
+                });
+                question.value = tempAnswers[tempIndex].value;
+                question.answerId = tempAnswers[tempIndex]._id;
+            })
+        }
     }
 
     const updateCompletedTopics = () => {
@@ -81,10 +101,10 @@ const CapabilityContainer = () => {
     const onAnswerSubmit = (updatedQuestions) => {
         let testQuestions = questions;
         updatedQuestions.map((question) => {
-            let testid = questions.findIndex((test) => {
+            let testId = questions.findIndex((test) => {
                 return test.keyword === question.keyword;
             })
-            testQuestions[testid] = question;
+            testQuestions[testId] = question;
         });
         setQuestions(testQuestions);
         updateQuestions(selectedTopic);
@@ -128,7 +148,12 @@ const CapabilityContainer = () => {
 
     const submitData = () => {
         sendUser('users',userDetails);
+        if (returningUser) {
+            updateAnswers(questions,userDetails);
+        }
+        else{
         sendAnswers(questions,userDetails);
+        }
     }
 
     //The default page is the menu page with different routes leading to the matching pages
@@ -140,7 +165,7 @@ const CapabilityContainer = () => {
                 <Routes>
                     <Route path="/CapabilityApp" element={<MenuPage onUserSubmit={(userDetails) => handleUserInput(userDetails)} />} />
                     <Route path="/CapabilityApp/Topics" element={<TopicsPage topics={topics} onTopicSelect={(selectedTopic) => handleSelectedTopic(selectedTopic)} completedTopics={completedTopics} toggleBar={() => toggleBar()} submitData={() => submitData()}/>} />
-                    <Route path="/CapabilityApp/Questions" element={<QuestionPage questions={filteredQuestions} answers={answers} onAnswerSubmit={(updatedQuestions) => onAnswerSubmit(updatedQuestions)} />} />
+                    <Route path="/CapabilityApp/Questions" element={<QuestionPage questions={filteredQuestions} onAnswerSubmit={(updatedQuestions) => onAnswerSubmit(updatedQuestions)} />} />
                     <Route path="/CapabilityApp/Summary" element={<SummaryPage questions={questions} topics={topics} userDetails={userDetails} />} />
                     <Route path="/*" element={<NotFoundPage />} />
                 </Routes>

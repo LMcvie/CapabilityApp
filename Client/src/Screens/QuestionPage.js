@@ -4,7 +4,7 @@ import './QuestionPage.css';
 
 //Handles the submission of the answers 
 
-const QuestionPage = ({questions, answers, onAnswerSubmit }) => {
+const QuestionPage = ({questions, onAnswerSubmit }) => {
 
   let navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const QuestionPage = ({questions, answers, onAnswerSubmit }) => {
   // for the list of questions create a question component with slider and description
   const QuestionList = questions.map((question, index) => {
     return (
-      <QuestionSlider question={question} answer ={answers[index]} key={index} id={index} ></QuestionSlider>
+      <QuestionSlider question={question} key={index} id={index} ></QuestionSlider>
     );
   });
 

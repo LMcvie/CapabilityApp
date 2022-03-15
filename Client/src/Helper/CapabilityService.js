@@ -6,7 +6,7 @@ export const fetchData = async (collection) => {
         const response = await fetch(`${baseURL}${collection}`)
         const data = await response.json();
 
-        return(data);
+        return (data);
     }
     catch (error) {
         console.log('error');
@@ -15,11 +15,11 @@ export const fetchData = async (collection) => {
 }
 
 //fetch by filter searches specified collection and returns data that has the key value pair of filter
-export const fetchByFilter = async (collection,filter) => {
+export const fetchByFilter = async (collection, filter) => {
     try {
         const response = await fetch(`${baseURL}${collection}/?${filter}`)
         const data = await response.json();
-        return(data);
+        return (data);
     }
 
     catch (error) {
@@ -29,15 +29,11 @@ export const fetchByFilter = async (collection,filter) => {
 
 // filterTerm: key
 // filterArray = list of the values for that key you want back
-export const fetchAll = async (collection, filterArray,filterTerm) => {
-    console.log(collection);
-    console.log(filterArray);
-    console.log(filterTerm);
+export const fetchAll = async (collection, filterArray, filterTerm) => {
     try {
         let response = await Promise.all(filterArray.map(filter => fetch(`${baseURL}${collection}/?${filterTerm}${filter._id}`)));
         let data = await Promise.all(response.map(res => res.json()));
-        console.log(data);
-        return(data.flat());
+        return (data.flat());
     }
 
     catch (error) {
@@ -46,43 +42,56 @@ export const fetchAll = async (collection, filterArray,filterTerm) => {
 
 }
 
+export const sendUser = async (collection, payload) => {
+    let id = payload._id;
 
-
-export const sendUser = async (collection,payload) => {
-    console.log(collection);
-    return fetch(`${baseURL}${collection}`, {
-        method: 'POST',
-        body: JSON.stringify(payload),
-        headers: { 'Content-Type': 'application/json' }
-    })
-    .then(res => res.json())
-}
-
-export const updateData = async(collection,payload,id) => {
     return fetch(`${baseURL}${collection}/${id}`, {
         method: 'PUT',
         body: JSON.stringify(payload),
         headers: { 'Content-Type': 'application/json' }
     })
-    .then(res => res.json())
+        .then(res => res.json())
 }
 
-
-export const sendAnswers = async(questions,userDetails) => {
-    let payload = questions.map((question) => {
-        return ({
+export const sendAnswers = async (questions, userDetails) => {
+    console.log(userDetails._id);
+    questions.map((question) => {
+        let payload = {
             questionId: question._id,
             userId: userDetails._id,
             value: question.value,
+        }
+
+        return fetch(`${baseURL}answers`, {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: { 'Content-Type': 'application/json' }
         })
-       
+            .then(res => res.json())
+
     })
-    console.log(payload);
-    // return fetch(`${baseURL}answers`, {
-    //     method: 'POST',
-    //     body: JSON.stringify(payload),
-    //     headers: { 'Content-Type': 'application/json' }
-    // })
-    // .then(res => res.json())
+
+}
+
+
+export const updateAnswers = async (questions, userDetails) => {
+    
+    questions.map((question) => {
+       
+        let payload = {
+            questionId: question._id,
+            userId: userDetails._id,
+            value: question.value,
+        }
+
+        return fetch(`${baseURL}answers/${question.answerId}`, {
+            method: 'PUT',
+            body: JSON.stringify(payload),
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .then(res => res.json())
+
+    })
+
 }
 

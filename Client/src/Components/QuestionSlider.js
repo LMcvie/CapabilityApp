@@ -7,13 +7,14 @@ import PopUp from "./PopUp.js";
 
 //Sets the default answer value
 const QuestionSlider = ({question,id}) => {
-    const [answer,setAnswer]= useState(question.value);
+    const [answer,setAnswer]= useState(question.value || '0');
     const [isShown,setShown] = useState (false);
 
  
 
     useEffect(() => {
          loadSlider();
+         
     }, []);
 
     useEffect(() => {
