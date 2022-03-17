@@ -45,7 +45,7 @@ const CapabilityContainer = () => {
         setSkills(tempSkills);
         let tempQuestions = await fetchAll('questions', tempSkills, 'skillId=');
         await setQuestions(tempQuestions);
-        checkReturningUser(userDetails._id,tempQuestions);
+        await checkReturningUser(userDetails._id,tempQuestions);
     }
 
     const handleUserInput = ({ userDetails }) => {
