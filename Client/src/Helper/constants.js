@@ -5,18 +5,18 @@ export const disciplinesGroups = [
     },
     {
         name: 'Designer',
-        _id: 'DES'
+        _id: 'Des'
     },
     {
-        name: 'Product Owner',
-        _id: 'PO'
+        name: 'Product Management',
+        _id: 'PM'
     },
     {
         name: 'Scrum Master',
         _id: 'Scrum'
     },
     {
-        name: 'Software Developer',
+        name: 'Engineering',
         _id: 'SDev'
     },
 ];
@@ -27,6 +27,4 @@ export const optimus = [
     { name: 'Understand', _id: 'Understand', completed: 'notCompleted' },
     { name: 'Incubate', _id: 'Incubate', completed: 'notCompleted' },
     { name: 'Develop', _id: 'Develop', completed: 'notCompleted' },
-    { name: 'Deploy', _id: 'Deploy', completed: 'notCompleted' },
-    { name: 'General', _id: 'General', completed: 'notCompleted' },
 ];

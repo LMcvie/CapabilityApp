@@ -26,10 +26,10 @@ const QuestionPage = ({questions, onAnswerSubmit }) => {
 
     <>
       <h2>QuestionPage</h2>
-      <div id='QuestionPage'>
+      <div className = 'disable-scrollbars' id='QuestionPage'>
         {QuestionList}
       </div>
-      <button onClick={handleSubmit}>Submit Answers</button>
+      <button id = 'questionSubmit' onClick={handleSubmit}>Submit Answers</button>
     </>
   )
 
