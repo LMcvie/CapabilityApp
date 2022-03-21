@@ -99,14 +99,11 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
     return (
         <div id='summary'>
             <h2>Summary</h2>
-
             <select defaultValue={''} name='Optimus Stage' required onChange={handleOptimusChange}>
                 <option value='' required>Optimus Overview</option>
                 <option value='Understand'>Understand</option>
                 <option value='Incubate'>Incubate</option>
                 <option value='Develop'>Develop</option>
-                <option value='Deploy'>Deploy</option>
-                <option value='General'>General</option>
             </select>
 
             <div id="chart">
@@ -117,10 +114,8 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
             <div id='data'>
                 <h2>Numerical Data</h2>
 
-                {/* {filteredStage !== '' && <h3>{filteredStage}</h3>} */}
                 {dataList}
 
-                {/* {filteredStage === '' && <h3>Overview</h3>} */}
                 <div id='overview'>
                     {topicList}
                 </div>

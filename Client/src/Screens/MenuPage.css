@@ -6,8 +6,9 @@
 
 
 #About{
+    height:15rem;
     Margin:2rem;
-    padding:1rem;
+    padding:2rem;
     border-radius:5%;
     border: solid silver 2px;
 }

@@ -25,7 +25,7 @@ db.questions.insertMany([
         skillId:'EmergingTech',
         text: 'How confident are you with Emerging Technology Monitoring?',
         description: 'Identifying and assessing new and emerging technologies, products, services, methods and techniques.',
-        keyword: 'Emerging Technology Monitoring',
+        keyword: 'Emerging Technology',
     },
     {
         name: 'Understand',
@@ -272,7 +272,7 @@ db.questions.insertMany([
         name: 'Develop',
         _id: 'question-33',
         skillId:'SoftDesign',
-        text: 'How confident are you with - Software Design?',
+        text: 'How confident are you with Software Design?',
         description: 'Ability to specify and design software to meet defined requirements by following agreed design standards and principles',
         keyword: 'Software Design',
     },
@@ -480,9 +480,9 @@ db.questions.insertMany([
         name: 'Develop',
         _id: 'question-59',
         skillId:'GCP',
-        text: 'How confident are you with Performance Testing?',
+        text: 'How confident are you with GCP?',
         description: 'Ability to apply knowledge and expertise of GCP to ensure successful migration from  ICP whilst meetings the needs of the Lab and respective teams. Ability to apply knowledge and experience of  GCP  in order to effectively navigate the route to live process in a safe, secure and efficient manner',
-        keyword: 'Performance Testing',
+        keyword: 'GCP',
     },
    
 

@@ -6,7 +6,12 @@
 }
 
 #topicsList > button{
+    
+}
+
+#topicButton{
+    margin-top:0.5rem;
     border-radius:10%;
-    height:3rem;
-    width: 5.5rem;
+    height:4rem;
+    width: 8.5rem;
 }

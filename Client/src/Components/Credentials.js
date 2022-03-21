@@ -73,9 +73,9 @@ const Credentials = ({ onUserSubmit }) => {
     return (
         <div>
             <form id='userInfo' onSubmit={handleStart}>
-                <div className="formWrap">
+                <div className="formWrap" id='email'>
                     <label htmlFor="email"> Email Address (Work): </label>
-                    <input type='email' placeholder='Email' required onChange={handleEmailChange} />
+                    <input type='email'  placeholder='Email' required onChange={handleEmailChange} />
                 </div>
 
                 <div className="formWrap">
