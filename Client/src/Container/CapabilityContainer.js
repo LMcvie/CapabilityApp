@@ -25,14 +25,13 @@ const CapabilityContainer = () => {
     const [skills, setSkills] = useState();
     const [returningUser,setReturningUser] = useState(false);
 
-    // set progress bar set up on load
     useEffect(async () => {
         if (discipline) {
             getData();
         }
     }, [discipline]);
 
-    // if progress is 100% completed set completed topics variable to true. only checks this when progress state is changed
+
     useEffect(() => {
         if (progress === 100) {
             setCompletedTopics(true);
@@ -59,17 +58,18 @@ const CapabilityContainer = () => {
     const checkReturningUser = async (id,tempQuestions) => {
         let temp = await fetchByFilter('users', `_id=${id}`);
 
-        //if user already exists
         if (temp[0]) {
-            setReturningUser(true);
+            
             let tempAnswers = await fetchByFilter('answers', `userId=${id}`);
-            tempQuestions.map((question) => {
+
+                await tempQuestions.map((question) => {
                 let tempIndex = tempAnswers.findIndex((answer) => {
-                    return answer.questionId === question._id
+                    return (answer.questionId === question._id)
                 });
                 question.value = tempAnswers[tempIndex].value;
                 question.answerId = tempAnswers[tempIndex]._id;
             })
+            setReturningUser(true);
         }
     }
 
@@ -83,7 +83,7 @@ const CapabilityContainer = () => {
         setTopics(tempTopics);
         setProgressBar();
     }
-    //Update the topic menu as the topics are selected 
+
     const handleSelectedTopic = ({ selectedTopic }) => {
         selectedTopic = selectedTopic.replace(/ /g, '');
         setSelectedTopic(selectedTopic);
@@ -102,7 +102,7 @@ const CapabilityContainer = () => {
         let testQuestions = questions;
         updatedQuestions.map((question) => {
             let testId = questions.findIndex((test) => {
-                return test.keyword === question.keyword;
+                return test._id === question._id;
             })
             testQuestions[testId] = question;
         });
@@ -113,7 +113,6 @@ const CapabilityContainer = () => {
 
     }
 
-    //get the average result for the skill/topic and store it in the topic object
     const getTopicAverage = (updatedQuestions) => {
         let tempTopics = topics;
         let tempId = tempTopics.findIndex((test) => {
@@ -141,7 +140,7 @@ const CapabilityContainer = () => {
     }
 
 
-    // calls the progress bar on the required screen (sets the visibility of the progress bar)
+ 
     const toggleBar = () => {
         setLoadingBarRequired(!loadingBarRequired);
     }
@@ -156,7 +155,6 @@ const CapabilityContainer = () => {
         }
     }
 
-    //The default page is the menu page with different routes leading to the matching pages
     return (
         <div id='Container'>
             <ProgressBar progress={progress} loadingBarRequired={loadingBarRequired} />
