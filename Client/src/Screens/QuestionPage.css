@@ -1,7 +1,5 @@
 #QuestionPage{ 
-    overflow-y: auto;
-    /* overflow-y:scroll; */
-   
+    overflow-y: auto;   
 }
 
 #questionList{

@@ -2,15 +2,9 @@ import "./QuestionSlider.css";
 import {useState,useEffect} from 'react';
 import PopUp from "./PopUp.js";
 
-//Slider bar to answer each question
-
-
-//Sets the default answer value
 const QuestionSlider = ({question,id}) => {
     const [answer,setAnswer]= useState(question.value || '0');
     const [isShown,setShown] = useState (false);
-
- 
 
     useEffect(() => {
          loadSlider();
@@ -25,8 +19,7 @@ const QuestionSlider = ({question,id}) => {
         setSliderColor();
     } 
 
-    //Based on the value of the answer a certain colour is set
-    
+
 
     const setSliderColor= () => {
         let gradientColor;
@@ -41,12 +34,10 @@ const QuestionSlider = ({question,id}) => {
         document.getElementById(id).style.background = color;
     }
 
-// updates answer and color when slider is either clicked or thumb is moved
     const handleChange = (event) => {
         setSliderColor();
         setAnswer(event.target.value);
         
-
     }
 
     return (
@@ -55,7 +46,6 @@ const QuestionSlider = ({question,id}) => {
             <p >{question.text}</p>
             <img src = 'https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_info_outline_48px-512.png' alt = 'info icon' width = '20px' height = '20px' onMouseOver={() => setShown(true)} onMouseOut={() => setShown(false)}></img>
 
-              {/* Hovers the description of the question in details */}
               {isShown && (
                 <div id = 'popUp'>
                     <PopUp description ={question.description}/>

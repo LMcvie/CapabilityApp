@@ -12,7 +12,6 @@ import { optimus } from '../Helper/constants.js';
 
 const CapabilityContainer = () => {
 
-
     const [userDetails, setUserDetails] = useState({});
     const [discipline, setDiscipline] = useState();
     const [progress, setProgress] = useState('0');
@@ -52,7 +51,6 @@ const CapabilityContainer = () => {
         delete userDetails.discipline;
         setUserDetails(userDetails);
         setLoadingBarRequired(true);
-        
     }
 
     const checkReturningUser = async (id,tempQuestions) => {

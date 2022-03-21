@@ -46,7 +46,6 @@ const Credentials = ({ onUserSubmit }) => {
         setUserDetails(updatedDetails);
     }
 
-    // on submit send the user data back to the container to be stored
     const handleStart = (event) => {
         event.preventDefault();
         onUserSubmit({ userDetails });

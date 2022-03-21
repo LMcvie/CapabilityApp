@@ -13,9 +13,6 @@ const QuestionPage = ({questions, onAnswerSubmit }) => {
     onAnswerSubmit(questions);
   }
 
-
-
-  // for the list of questions create a question component with slider and description
   const QuestionList = questions.map((question, index) => {
     return (
       <QuestionSlider question={question} key={index} id={index} ></QuestionSlider>

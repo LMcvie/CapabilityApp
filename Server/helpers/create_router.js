@@ -1,6 +1,5 @@
 const express = require('express');
 const ObjectId = require('mongodb').ObjectId;
-//const ObjectID = require('mongodb').ObjectID; mongoDB older version. comment line above and use this one if mongo version is older than v4.4
 
 const createRouter = function (collection) {
 

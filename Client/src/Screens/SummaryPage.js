@@ -3,8 +3,6 @@ import './SummaryPage.css';
 import SpiderChart from '../Components/SpiderChart.js';
 import { useState } from "react";
 
-//On the submission of the answers create a spider chart 
-
 const SummaryPage = ({ questions, topics, userDetails }) => {
 
     const [filteredQuestions, setFilteredQuestions] = useState();
@@ -48,7 +46,6 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
                     <li>Value:  {question.value}/100</li>
                     <li>Skill Level: {skillLevel}</li>
                 </ul>
-
             )
         })
     }

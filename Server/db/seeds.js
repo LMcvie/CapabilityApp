@@ -186,7 +186,7 @@ db.questions.insertMany([
         _id: 'question-23',
         skillId:'InfoAssurance',
         text: 'How confident are you with Information Assurance?',
-        description: 'Ability to articulate and apply appropriate methods and practices to protecting against and managing risks related to the use, storage and transmission of data',
+        description: 'Ability to articulate and apply appropriate methods and practices to protect against and manage risks relating to the use, storage and transmission of data',
         keyword: 'Information Assurance',
     },
     {
@@ -240,7 +240,7 @@ db.questions.insertMany([
         name: 'Develop',
         _id: 'question-29',
         skillId:'Prioritisation',
-        text: 'How confident are you with Cost and Prioritisation?',
+        text: 'How confident are you with Prioritisation?',
         description: 'Ability to assess the value and effort of a given task to ensure alignment of priorities to that of the backlog',
         keyword: 'Prioritisation',
     },

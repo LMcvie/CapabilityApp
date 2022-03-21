@@ -1,4 +1,4 @@
-/* set dimension of list and allow from scrolling */
+
 #list {
     overflow-y: auto;
     width: 100%;
@@ -8,7 +8,7 @@
     flex-direction: column;
 
  }
-/* style all the buttons in the scrollable list the same */
+
  #list > button {
     background-color: white;
     width: 15rem;
@@ -18,28 +18,21 @@
     margin-bottom:1.5rem;
  }
  
- /* As the topics get completed the color changes */
- 
- /* When a topic is completed the color turn to dark grey */
- 
  #list >.completed{
      background-color: darkgray;
      border: 1px solid dodgerblue;
  }
 
- /* if class is not completed set background to white */
  #list > .notCompleted{
      background-color:white;
      border: 1px solid dodgerblue;
  }
 
- /* if selected set button colour to blue with white border */
  #list > .selected {
      background-color: rgb(0, 183, 255);
      border: 1px solid white;
  }
 
- /* Styling of the select button */
  #select {
     border-radius:10%;
     height:4rem;
