@@ -82,7 +82,8 @@ const CapabilityContainer = () => {
         setProgressBar();
     }
 
-    const handleSelectedTopic = ({ selectedTopic }) => {
+    const handleSelectedTopic = (selectedTopic) => {
+        console.log(selectedTopic);
         selectedTopic = selectedTopic.replace(/ /g, '');
         setSelectedTopic(selectedTopic);
         updateQuestions(selectedTopic);

@@ -17,8 +17,8 @@ const TopicsPage = ({topics, onTopicSelect, completedTopics, toggleBar, submitDa
         window.location.reload();
     }
 
-    const handleTopicSelect = ({selectedTopic}) => {
-       onTopicSelect({selectedTopic});
+    const handleTopicSelect = (selectedTopic) => {
+       onTopicSelect(selectedTopic);
       
     }
     

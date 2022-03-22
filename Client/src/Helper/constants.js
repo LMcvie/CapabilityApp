@@ -1,10 +1,10 @@
 export const disciplinesGroups = [
     {
-        name: 'Business Analyst',
+        name: 'Business Analysis',
         _id: 'BA',
     },
     {
-        name: 'Designer',
+        name: 'Design',
         _id: 'Des'
     },
     {
