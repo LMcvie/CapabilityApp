@@ -5,7 +5,7 @@ export const disciplinesGroups = [
     },
     {
         name: 'Design',
-        _id: 'Des'
+        _id: 'Design'
     },
     {
         name: 'Product Management',
@@ -27,4 +27,5 @@ export const optimus = [
     { name: 'Understand', _id: 'Understand', completed: 'notCompleted' },
     { name: 'Incubate', _id: 'Incubate', completed: 'notCompleted' },
     { name: 'Develop', _id: 'Develop', completed: 'notCompleted' },
+    { name: 'Deploy', _id: 'Deploy', completed: 'notCompleted' },
 ];

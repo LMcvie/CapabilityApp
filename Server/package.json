@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "server:dev": "nodemon server.js",
-    "seeds": "mongo < ./db/seeds.js"
+    "seeds": "mongo < ./db/teamSeeds.js && mongo < ./db/EngSeeds.js && mongo < ./db/ScrumSeeds.js && mongo < ./db/DesignSeeds.js && mongo < ./db/ProductSeeds.js && mongo < ./db/BusinessSeeds.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

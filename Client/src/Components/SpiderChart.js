@@ -21,7 +21,7 @@ const handleTopicData = () => {
   setData(topics.map((topic) => {
     return {name: topic.name, user:topic.value}
 }))
-  setAspect('1.3');
+  setAspect('1.5');
 }
 
 const handleFilterData =() => {

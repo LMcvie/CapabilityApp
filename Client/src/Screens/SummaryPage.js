@@ -82,7 +82,7 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
     const handleOptimusChange = (event) => {
         setFilteredStage(event.target.value);
         filterQuestions(event.target.value);
-
+        document.getElementById('data').scrollTop = 0;
     }
 
     const filterQuestions = (stage) => {
