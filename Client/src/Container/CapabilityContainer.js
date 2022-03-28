@@ -38,12 +38,24 @@ const CapabilityContainer = () => {
     }, [progress]);
 
     const getData = async () => {
-        setTopics(optimus);
+       
         let tempSkills = await fetchByFilter('skills', `disciplineId=${discipline._id}`);
         setSkills(tempSkills);
+        filterTopics(tempSkills,optimus);
         let tempQuestions = await fetchAll('questions', tempSkills, 'skillId=');
         await setQuestions(tempQuestions);
         await checkReturningUser(userDetails._id,tempQuestions);
+    }
+    
+    const filterTopics = (skills,optimus) => {
+        optimus.filter((topic,index) => {
+            let result = skills.some(skill => skill.optimusId == topic.name);
+
+            if (!result) {
+                optimus.splice(index,1);
+            }
+        })
+        setTopics(optimus);
     }
 
     const handleUserInput = ({ userDetails }) => {
