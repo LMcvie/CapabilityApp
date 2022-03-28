@@ -62,19 +62,3 @@ db.teams.insertMany([
     },
 
 ]);
-
-// db.users.insertMany([
-//     {
-//         _id: 'test@mail.com',
-//         disciplineId: 'SDev',
-//         teamId: 'Ganon',
-//     },
-// ]);
-
-// db.answers.insertMany([
-//     {
-//         questionId: 'question-1',
-//         userId: 'test@mail.com',
-//         value: '100',
-//     },
-// ])

@@ -10,6 +10,7 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
 
     let dataList = '';
     let topicList = '';
+    let optionList = '';
 
     const navigate = useNavigate();
 
@@ -79,6 +80,11 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
             )
         })
     }
+
+    optionList = topics.map((topic, index) => {
+        let key = `option${index}`;
+        return <option key = {key} value={topic.name}>{topic.name} </option>
+    });
     const handleOptimusChange = (event) => {
         setFilteredStage(event.target.value);
         filterQuestions(event.target.value);
@@ -98,9 +104,7 @@ const SummaryPage = ({ questions, topics, userDetails }) => {
             <h2>Summary</h2>
             <select defaultValue={''} name='Optimus Stage' required onChange={handleOptimusChange}>
                 <option value='' required>Optimus Overview</option>
-                <option value='Understand'>Understand</option>
-                <option value='Incubate'>Incubate</option>
-                <option value='Develop'>Develop</option>
+                {optionList}
             </select>
 
             <div id="chart">

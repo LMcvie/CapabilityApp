@@ -48,14 +48,19 @@ const CapabilityContainer = () => {
     }
     
     const filterTopics = (skills,optimus) => {
-        optimus.filter((topic,index) => {
+        let temp = [...optimus];
+        
+        temp.filter((topic,index) => {
             let result = skills.some(skill => skill.optimusId == topic.name);
 
             if (!result) {
-                optimus.splice(index,1);
+                temp.splice(index,1);
             }
         })
-        setTopics(optimus);
+        setTopics(temp);
+        console.log(temp);
+        console.log(optimus);
+        
     }
 
     const handleUserInput = ({ userDetails }) => {
@@ -67,8 +72,7 @@ const CapabilityContainer = () => {
 
     const checkReturningUser = async (id,tempQuestions) => {
         let temp = await fetchByFilter('users', `_id=${id}`);
-
-        if (temp[0]) {
+        if (temp[0] && temp[0].disciplineId ===discipline._id) {
             
             let tempAnswers = await fetchByFilter('answers', `userId=${id}`);
 
@@ -95,7 +99,6 @@ const CapabilityContainer = () => {
     }
 
     const handleSelectedTopic = (selectedTopic) => {
-        console.log(selectedTopic);
         selectedTopic = selectedTopic.replace(/ /g, '');
         setSelectedTopic(selectedTopic);
         updateQuestions(selectedTopic);
@@ -149,8 +152,6 @@ const CapabilityContainer = () => {
         });
         setFilteredQuestions(topicQuestions);
     }
-
-
  
     const toggleBar = () => {
         setLoadingBarRequired(!loadingBarRequired);

@@ -17,7 +17,7 @@ export const disciplinesGroups = [
     },
     {
         name: 'Engineering',
-        _id: 'SDev'
+        _id: 'Eng'
     },
 ];
 

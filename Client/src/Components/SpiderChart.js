@@ -17,7 +17,11 @@ useEffect(() => {
 
 
 const handleTopicData = () => {
-  
+  if (topics.length <= 2)
+    {
+      document.getElementById('chart').style.display ='none';
+      return;
+    }
   setData(topics.map((topic) => {
     return {name: topic.name, user:topic.value}
 }))
@@ -25,11 +29,16 @@ const handleTopicData = () => {
 }
 
 const handleFilterData =() => {
-
+  document.getElementById('chart').style.display ='flex';
   if (filteredStage ==='') {
     handleTopicData();
     return;
-  }  
+  } 
+    if (filteredQuestions.length <= 2)
+    {
+      document.getElementById('chart').style.display ='none';
+      return;
+    }
     setData(filteredQuestions.map((question) => {
       return {name: question.keyword, user:question.value}
   }))
